@@ -1,110 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyeria de Esmeraldas - Certificación y Gemología</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
     <style>
-        /* ---------- DARK LUXURY BASE ---------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ========== NUEVO ESTILO DARK LUXURY ========== */
         body {
             background-color: #0a0a0a;
-            font-family: 'Inter', sans-serif;
             color: #e5e0d8;
+            font-family: 'Inter', sans-serif;
         }
 
-        /* ---------- TIPOGRAFÍA ELEGANTE ---------- */
         .font-serif {
             font-family: 'Playfair Display', serif;
         }
 
-        /* ---------- FONDO CON DEGRADADO OSCURO Y BRILLO ---------- */
-        .dark-luxury-bg {
-            background: radial-gradient(circle at 30% 10%, #0f1f0f, #050805 80%);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
-        }
-
-        /* ---------- DORADO ELEGANTE ---------- */
         .gold {
             color: #d4af37;
         }
         .gold-border {
-            border-color: rgba(212, 175, 55, 0.3);
+            border-color: rgba(212, 175, 55, 0.25);
         }
         .gold-glow {
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
-        }
-        .gold-gradient {
-            background: linear-gradient(135deg, #d4af37, #b8962e);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.05);
         }
 
-        /* ---------- BOTONES CON ESTILO LUXURY ---------- */
-        .btn-luxury {
-            background: linear-gradient(145deg, #1a2a1a, #0f1a0f);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: #e5e0d8;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-        .btn-luxury:hover {
-            border-color: #d4af37;
-            background: linear-gradient(145deg, #1f301f, #142214);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
-        }
-        .btn-luxury i {
-            color: #d4af37;
+        /* Header oscuro elegante */
+        .dark-luxury-header {
+            background: radial-gradient(circle at 30% 10%, #0f1f0f, #050805 90%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        /* ---------- TARJETAS GEOMÉTRICAS ---------- */
-        .card-luxury {
-            background: rgba(18, 28, 18, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 16px;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-        }
-        .card-luxury:hover {
-            border-color: rgba(212, 175, 55, 0.4);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.05);
-        }
-
-        /* ---------- BUSCADOR ---------- */
-        .search-input {
-            background: rgba(10, 15, 10, 0.8);
+        /* Buscador oscuro */
+        .search-input-dark {
+            background: rgba(10, 15, 10, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.2);
             color: #e5e0d8;
             padding: 0.9rem 1.5rem;
             border-radius: 50px;
             width: 100%;
-            font-size: 0.95rem;
             transition: all 0.3s ease;
             backdrop-filter: blur(8px);
         }
-        .search-input::placeholder {
+        .search-input-dark::placeholder {
             color: rgba(229, 224, 216, 0.4);
             font-weight: 300;
-            letter-spacing: 0.5px;
         }
-        .search-input:focus {
+        .search-input-dark:focus {
             outline: none;
             border-color: #d4af37;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.08);
             background: rgba(10, 15, 10, 0.95);
         }
-        .search-btn {
-            background: linear-gradient(135deg, #1a2a1a, #0f1a0f);
+
+        .search-btn-dark {
+            background: linear-gradient(145deg, #1a2a1a, #0f1a0f);
             border: 1px solid rgba(212, 175, 55, 0.3);
             color: #d4af37;
             border-radius: 50px;
@@ -112,74 +67,77 @@
             transition: all 0.3s ease;
             font-weight: 500;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
-        .search-btn:hover {
+        .search-btn-dark:hover {
             background: linear-gradient(135deg, #d4af37, #b8962e);
             color: #0a0a0a;
             border-color: #d4af37;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.15);
         }
 
-        /* ---------- WHATSAPP FLOAT ---------- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #25d366, #1da851);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 30px;
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
-            z-index: 999;
-            transition: all 0.3s ease;
-            text-decoration: none;
+        /* Subtexto elegante */
+        .subtext-luxury {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            color: #b8b0a6;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1) rotate(-5deg);
-            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
-        }
-        .whatsapp-float .tooltip {
-            position: absolute;
-            right: 75px;
-            background: #1a1a1a;
+        .subtext-luxury i {
             color: #d4af37;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 13px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        }
+
+        /* Botones lujosos */
+        .btn-luxury {
+            background: linear-gradient(145deg, #1a2a1a, #0f1a0f);
             border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #e5e0d8;
+            padding: 0.75rem 1.8rem;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             font-weight: 400;
             letter-spacing: 0.3px;
         }
-        .whatsapp-float:hover .tooltip {
-            opacity: 1;
+        .btn-luxury:hover {
+            border-color: #d4af37;
+            background: linear-gradient(145deg, #1f301f, #142214);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 35px rgba(212, 175, 55, 0.1);
+        }
+        .btn-luxury i {
+            color: #d4af37;
         }
 
-        /* ---------- CERTIFICADO ---------- */
-        .certificate-container {
-            perspective: 1200px;
+        /* Tarjetas oscuras con vidrio */
+        .card-dark {
+            background: rgba(18, 28, 18, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
         }
-        .certificate-image {
-            transition: transform 0.6s ease, box-shadow 0.6s ease;
-            border-radius: 12px;
+        .card-dark:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.03);
+        }
+
+        /* Mapa con borde dorado */
+        .map-container-dark {
+            border-radius: 16px;
             overflow: hidden;
-        }
-        .certificate-image:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            background: rgba(10, 15, 10, 0.6);
         }
 
-        /* ---------- SELECTOR DE FORMAS ---------- */
-        .shape-selector {
+        /* Selector de formas oscuro */
+        .shape-selector-dark {
             background: rgba(18, 28, 18, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.12);
             border-radius: 12px;
             padding: 1rem 0.75rem;
             transition: all 0.4s ease;
@@ -187,74 +145,62 @@
             text-align: center;
             backdrop-filter: blur(6px);
         }
-        .shape-selector:hover {
-            border-color: rgba(212, 175, 55, 0.4);
+        .shape-selector-dark:hover {
+            border-color: rgba(212, 175, 55, 0.35);
             transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
-        .shape-selector.active {
+        .shape-selector-dark.active {
             border: 2px solid #d4af37;
-            background: rgba(212, 175, 55, 0.08);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.05);
+            background: rgba(212, 175, 55, 0.06);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.04);
         }
-        .shape-selector img {
-            filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.1));
-        }
-        .shape-selector p {
+        .shape-selector-dark p {
             color: #b8b0a6;
             font-size: 0.8rem;
             margin-top: 0.3rem;
-            letter-spacing: 0.5px;
             font-weight: 300;
         }
-        .shape-selector.active p {
+        .shape-selector-dark.active p {
             color: #d4af37;
         }
 
-        /* ---------- MAPA ---------- */
-        .map-container {
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        /* ---------- TABLA ---------- */
-        .table-luxury {
+        /* Tabla oscura */
+        .table-dark {
             border-collapse: collapse;
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
         }
-        .table-luxury thead {
+        .table-dark thead {
             background: linear-gradient(135deg, #1a2a1a, #0f1a0f);
         }
-        .table-luxury th {
+        .table-dark th {
             color: #d4af37;
             font-weight: 500;
             letter-spacing: 1px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             padding: 1rem 1.2rem;
         }
-        .table-luxury td {
+        .table-dark td {
             padding: 0.9rem 1.2rem;
             border-bottom: 1px solid rgba(212, 175, 55, 0.06);
             color: #c8c0b8;
         }
-        .table-luxury tr:nth-child(even) {
+        .table-dark tr:nth-child(even) {
             background: rgba(18, 28, 18, 0.3);
         }
-        .table-luxury tr:hover {
+        .table-dark tr:hover {
             background: rgba(212, 175, 55, 0.04);
         }
 
-        /* ---------- FOOTER ---------- */
-        .footer-luxury {
+        /* Footer oscuro */
+        .footer-dark {
             background: linear-gradient(180deg, #0a0f0a, #050805);
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-top: 1px solid rgba(212, 175, 55, 0.08);
         }
 
-        /* ---------- SCROLLBAR ---------- */
+        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -270,8 +216,87 @@
             background: #2a3f2a;
         }
 
-        /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 768px) {
+        /* ===== MANTENEMOS TUS ESTILOS ORIGINALES QUE NO INTERFIEREN ===== */
+        .certificate-container {
+            perspective: 1000px;
+        }
+        .certificate-image {
+            transition: transform 0.5s;
+        }
+        .certificate-image:hover {
+            transform: scale(1.03);
+        }
+        .certificate-code {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(10, 15, 10, 0.9);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+        }
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #25d366, #1da851);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+        }
+        .tooltip {
+            position: absolute;
+            right: 80px;
+            bottom: 20px;
+            background: #1a1a1a;
+            padding: 6px 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: #d4af37;
+            font-size: 13px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .whatsapp-float:hover .tooltip {
+            opacity: 1;
+        }
+
+        @media (max-width: 640px) {
+            .action-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .action-buttons button {
+                width: 100%;
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+            .shape-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
             .whatsapp-float {
                 width: 50px;
                 height: 50px;
@@ -279,114 +304,78 @@
                 bottom: 20px;
                 right: 20px;
             }
-            .whatsapp-float .tooltip {
+            .tooltip {
+                right: 60px;
+                bottom: 10px;
+                font-size: 12px;
                 display: none;
             }
             .logo-img {
                 height: 120px !important;
             }
-        }
-
-        @media (max-width: 640px) {
-            .shape-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .certificate-container {
+                grid-template-columns: 1fr;
             }
-            .action-buttons {
-                flex-direction: column;
+            .certificate-image {
+                margin-bottom: 1rem;
             }
-            .action-buttons button {
-                width: 100%;
-            }
-            .search-btn {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.85rem;
-            }
-            .search-input {
-                padding: 0.7rem 1rem;
-                font-size: 0.85rem;
+            .map-container {
+                height: 300px;
             }
         }
 
-        /* ---------- ANIMACIONES ---------- */
+        /* Animación de entrada */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade {
+        .fade-in {
+            opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
         }
-        .delay-1 {
-            animation-delay: 0.1s;
-        }
-        .delay-2 {
+        .fade-in-delay {
             animation-delay: 0.2s;
-        }
-        .delay-3 {
-            animation-delay: 0.3s;
-        }
-
-        .gold-text-shadow {
-            text-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
-        }
-
-        /* Geometría decorativa */
-        .gem-geometry {
-            position: relative;
-        }
-        .gem-geometry::before {
-            content: '◆';
-            position: absolute;
-            font-size: 0.6rem;
-            color: rgba(212, 175, 55, 0.15);
-            letter-spacing: 8px;
         }
     </style>
 </head>
-<body>
+<body class="bg-[#0a0a0a] font-sans">
 
-    <!-- WHATSAPP FLOAT -->
+    <!-- WhatsApp Float Button (sin cambios) -->
     <a href="https://wa.me/573184848399?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20sus%20esmeraldas" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
         <span class="tooltip">Comunícate con nosotros</span>
     </a>
 
-    <!-- ========== HEADER DARK LUXURY ========== -->
-    <header class="dark-luxury-bg py-4 px-4 md:px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6">
+    <!-- ===== HEADER DARK LUXURY (Logo a la IZQUIERDA) ===== -->
+    <header class="dark-luxury-header py-3 px-4 md:px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center gap-4 md:gap-6">
 
             <!-- LOGO A LA IZQUIERDA -->
             <div class="flex-shrink-0">
-                <img src="https://i.imgur.com/7ySsxSp.png" alt="Joyeria de Esmeraldas" class="h-28 md:h-32 lg:h-36 w-auto logo-img" />
+                <img src="https://i.imgur.com/7ySsxSp.png" alt="Joyeria de Esmeraldas" class="h-28 md:h-32 lg:h-36 w-auto logo-img">
             </div>
 
-            <!-- BUSCADOR + TEXTO AL LADO DERECHO -->
+            <!-- BUSCADOR + TEXTO A LA DERECHA -->
             <div class="flex-1 w-full">
                 <div class="relative max-w-2xl ml-auto">
                     <div class="flex items-center gap-3">
-                        <input
-                            type="text"
-                            id="certificateSearch"
-                            placeholder="Buscar certificado por código"
-                            class="search-input"
-                        />
-                        <button onclick="searchCertificate()" class="search-btn whitespace-nowrap">
+                        <input type="text" id="certificateSearch" placeholder="Buscar certificado por código"
+                            class="search-input-dark">
+                        <button onclick="searchCertificate()" class="search-btn-dark">
                             <i class="fas fa-search mr-2"></i> Buscar
                         </button>
                     </div>
 
-                    <!-- Texto decorativo debajo del buscador -->
+                    <!-- Texto decorativo (se mantiene tu contenido) -->
                     <div class="mt-3 text-right space-y-0.5">
-                        <p class="text-xs md:text-sm font-light tracking-widest gold uppercase opacity-70">
-                            <i class="fas fa-gem mr-1" style="color:#d4af37;"></i> Especialistas en esmeraldas colombianas
+                        <p class="subtext-luxury">
+                            <i class="fas fa-gem mr-1"></i> Especialistas en esmeraldas colombianas
                         </p>
-                        <p class="text-[11px] md:text-xs font-light text-gray-400 tracking-wide">
-                            Certificación local con verificación técnica y control gemológico interno
+                        <p class="subtext-luxury text-xs opacity-70">
+                            Certificamos otras gemas naturales bajo los mismos estándares gemológicos.
+                        </p>
+                        <p class="subtext-luxury text-xs opacity-50">
+                            Certificación local con verificación técnica y control gemológico interno.
                         </p>
                     </div>
                 </div>
@@ -395,267 +384,251 @@
         </div>
     </header>
 
-    <!-- ========== MAIN ========== -->
-    <main class="max-w-7xl mx-auto px-4 py-10">
+    <!-- ===== MAIN CONTENT (TODO TU CONTENIDO ORIGINAL, SOLO CAMBIOS DE CLASES) ===== -->
+    <main class="container mx-auto px-4 py-8">
 
-        <!-- BOTONES DE ACCIÓN -->
-        <div class="flex flex-wrap justify-center gap-4 mb-12 action-buttons animate-fade delay-1">
-            <button onclick="toggleCareGuide()" class="btn-luxury px-6 py-3 rounded-full flex items-center gap-2 text-sm tracking-wide">
-                <i class="fas fa-gem"></i> Cuidados especiales
+        <!-- Action Buttons (con nuevo estilo lujoso) -->
+        <div class="flex flex-col md:flex-row justify-center gap-4 mb-12 action-buttons fade-in">
+            <button onclick="toggleCareGuide()" class="btn-luxury flex items-center justify-center gap-2">
+                <i class="fas fa-gem"></i> Cuidados especiales para mis joyas
             </button>
-            <button onclick="toggleGemLab()" class="btn-luxury px-6 py-3 rounded-full flex items-center gap-2 text-sm tracking-wide">
+            <button onclick="toggleGemLab()" class="btn-luxury flex items-center justify-center gap-2">
                 <i class="fas fa-microscope"></i> Laboratorio Gemológico
             </button>
-            <button onclick="toggleInteractiveTools()" class="btn-luxury px-6 py-3 rounded-full flex items-center gap-2 text-sm tracking-wide">
+            <button onclick="toggleInteractiveTools()" class="btn-luxury flex items-center justify-center gap-2">
                 <i class="fas fa-tools"></i> Herramientas interactivas
             </button>
-            <button onclick="toggleOtherGems()" class="btn-luxury px-6 py-3 rounded-full flex items-center gap-2 text-sm tracking-wide">
-                <i class="fas fa-diamond"></i> Otras gemas
+            <button onclick="toggleOtherGems()" class="btn-luxury flex items-center justify-center gap-2">
+                <i class="fas fa-diamond"></i> Otras gemas certificadas
             </button>
         </div>
 
-        <!-- ========== CUIDADOS ========== -->
-        <div id="careGuide" class="hidden card-luxury p-6 md:p-8 mb-10 animate-fade">
-            <h2 class="text-2xl md:text-3xl font-serif gold font-semibold mb-6 gold-text-shadow">
-                <i class="fas fa-hand-holding-heart mr-3 gold"></i>Cuidados especiales
+        <!-- Special Care Guide (TARJETA OSCURA) -->
+        <div id="careGuide" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in">
+            <h2 class="text-2xl font-serif gold font-semibold mb-6 gold-text-shadow">
+                <i class="fas fa-hand-holding-heart mr-3 gold"></i>Cuidados especiales para tus piedras preciosas
             </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-2 gap-6">
                 <div>
-                    <h3 class="text-lg font-serif gold font-medium mb-2"><i class="fas fa-hand-holding-water mr-2"></i>Limpieza</h3>
-                    <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc pl-4">
-                        <li>Paño suave y seco</li>
-                        <li>Evita químicos, ultrasonido o vapor</li>
-                        <li>Agua tibia con jabón suave, enjuaga y seca</li>
-                        <li>No sumergir en solventes</li>
+                    <h3 class="text-xl font-serif gold font-medium mb-3"><i class="fas fa-hand-holding-water mr-2"></i>Limpieza</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                        <li>Limpia tus piedras con un paño suave y seco.</li>
+                        <li>Evita el uso de productos químicos, ultrasonido o vapor.</li>
+                        <li>Puedes usar agua tibia con un jabón suave, pero enjuaga bien y seca inmediatamente.</li>
+                        <li>No sumerjas tus piedras preciosas con tratamientos de aceite en solventes.</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-serif gold font-medium mb-2"><i class="fas fa-shield-alt mr-2"></i>Almacenamiento</h3>
-                    <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc pl-4">
-                        <li>Guarda cada pieza por separado</li>
-                        <li>Joyeros con compartimentos acolchados</li>
-                        <li>Alejar de diamantes y otras gemas duras</li>
-                        <li>Evita cambios bruscos de temperatura</li>
+                    <h3 class="text-xl font-serif gold font-medium mb-3"><i class="fas fa-shield-alt mr-2"></i>Almacenamiento</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                        <li>Guarda cada pieza por separado para evitar rayones.</li>
+                        <li>Usa joyeros con compartimentos acolchados.</li>
+                        <li>Mantén alejadas de otras joyas más duras como diamantes.</li>
+                        <li>Evita cambios bruscos de temperatura.</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-serif gold font-medium mb-2"><i class="fas fa-running mr-2"></i>Uso diario</h3>
-                    <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc pl-4">
-                        <li>Quitar al hacer deporte o tareas</li>
-                        <li>Evitar perfumes, lociones y cosméticos</li>
-                        <li>No exponer a golpes o presión</li>
-                        <li>Quitar anillos al lavarse las manos</li>
+                    <h3 class="text-xl font-serif gold font-medium mb-3"><i class="fas fa-running mr-2"></i>Uso diario</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                        <li>Quítate las joyas al hacer deporte o tareas domésticas.</li>
+                        <li>Evita el contacto con perfumes, lociones y cosméticos.</li>
+                        <li>No expongas a golpes o presión excesiva.</li>
+                        <li>Quítate anillos al lavarte las manos.</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-serif gold font-medium mb-2"><i class="fas fa-calendar-check mr-2"></i>Mantenimiento</h3>
-                    <ul class="space-y-2 text-gray-300 text-sm leading-relaxed list-disc pl-4">
-                        <li>Revisar engastes y soportes</li>
-                        <li>Limpieza profesional cada 6-12 meses</li>
-                        <li>Verificar tratamientos de aceite</li>
-                        <li>Consultar con gemólogos certificados</li>
+                    <h3 class="text-xl font-serif gold font-medium mb-3"><i class="fas fa-calendar-check mr-2"></i>Mantenimiento</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                        <li>Revisa periódicamente los engastes y soportes.</li>
+                        <li>Lleva a limpieza profesional cada 6-12 meses.</li>
+                        <li>Verifica tratamientos de aceite cada 2-3 años.</li>
+                        <li>Consulta con gemólogos certificados para cualquier duda.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- ========== LABORATORIO GEMOLÓGICO ========== -->
-        <div id="gemLab" class="hidden card-luxury p-6 md:p-8 mb-10 animate-fade">
-            <h2 class="text-2xl md:text-3xl font-serif gold font-semibold mb-8 text-center gold-text-shadow">
-                <i class="fas fa-microscope mr-3 gold"></i>Laboratorio Gemológico
-            </h2>
+        <!-- Gemological Lab (TARJETA OSCURA) -->
+        <div id="gemLab" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in">
+            <h2 class="text-3xl font-serif gold font-semibold mb-6 text-center gold-text-shadow">Laboratorio Gemológico</h2>
 
-            <!-- Cómo reconocer -->
-            <div class="mb-12">
-                <h3 class="text-xl font-serif gold font-medium mb-6 border-b border-gold-border pb-3">Auténtica vs Sintética</h3>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="card-luxury p-5">
-                        <h4 class="text-lg font-serif gold font-medium mb-3">✓ Esmeralda auténtica</h4>
-                        <ul class="space-y-2 text-gray-300 text-sm list-disc pl-4">
+            <!-- How to recognize real emeralds -->
+            <div class="mb-10">
+                <h3 class="text-2xl font-serif gold font-medium mb-4 border-b border-gold-border pb-2">Cómo reconocer una esmeralda auténtica de una sintetica</h3>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h4 class="text-xl font-serif gold font-medium mb-2">✓ Esmeralda auténtica</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-300 mb-4">
                             <li>Inclusiones naturales visibles (jardín)</li>
-                            <li>Color irregular con zonas claras/oscuras</li>
+                            <li>Color irregular con zonas más claras/oscuras</li>
                             <li>Brillo vítreo característico</li>
                             <li>Reacción específica bajo luz UV</li>
                         </ul>
-                        <img src="https://i.imgur.com/LEr8Lrr.png/400x300?text=Autentica" alt="Auténtica" class="mt-4 rounded-lg w-full border border-gold-border/20" />
+                        <img src="https://i.imgur.com/LEr8Lrr.png/400x300?text=Esmeralda+Autentica" alt="Esmeralda auténtica" class="rounded-lg shadow-lg border border-gold-border/20 w-full">
                     </div>
-                    <div class="card-luxury p-5">
-                        <h4 class="text-lg font-serif gold font-medium mb-3">✗ Esmeralda sintética</h4>
-                        <ul class="space-y-2 text-gray-300 text-sm list-disc pl-4">
+                    <div>
+                        <h4 class="text-xl font-serif gold font-medium mb-2">✗ Esmeralda sintética/imitativa</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-300 mb-4">
                             <li>Demasiado perfecta, sin inclusiones</li>
                             <li>Color demasiado uniforme</li>
                             <li>Burbujas de aire (en imitaciones de vidrio)</li>
                             <li>Patrones de crecimiento anómalos</li>
                         </ul>
-                        <img src="https://i.imgur.com/yKrbvab.png/400x300?text=Sintetica" alt="Sintética" class="mt-4 rounded-lg w-full border border-gold-border/20" />
+                        <img src="https://i.imgur.com/yKrbvab.png/400x300?text=Esmeralda+Sintetica" alt="Esmeralda sintética" class="rounded-lg shadow-lg border border-gold-border/20 w-full">
                     </div>
                 </div>
             </div>
 
-            <!-- Proceso paso a paso -->
-            <div class="mb-12">
-                <h3 class="text-xl font-serif gold font-medium mb-6 border-b border-gold-border pb-3">Proceso de análisis</h3>
-                <div class="space-y-6">
-                    <div class="flex items-start gap-5">
-                        <span class="gold-gradient w-10 h-10 rounded-full flex items-center justify-center text-black font-bold text-sm flex-shrink-0">1</span>
+            <!-- Step by step analysis process -->
+            <div class="mb-10">
+                <h3 class="text-2xl font-serif gold font-medium mb-4 border-b border-gold-border pb-2">Nuestro proceso de análisis gemológico paso a paso</h3>
+                <div class="flex flex-col space-y-8">
+                    <div class="flex items-start">
+                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">1</div>
                         <div>
-                            <h4 class="text-lg font-serif gold font-medium">Inspección visual inicial</h4>
-                            <p class="text-gray-300 text-sm">Examen con aumento 10x para identificar inclusiones características, color y posibles tratamientos.</p>
-                            <img src="https://i.imgur.com/525yQ3K.jpeg/600x200?text=Inspeccion" alt="Inspección" class="mt-2 rounded-lg w-full max-w-sm border border-gold-border/10" />
+                            <h4 class="text-xl font-serif gold font-medium mb-2">Inspección visual inicial</h4>
+                            <p class="text-gray-300">Examen con aumento 10x para identificar inclusiones características, color y posibles tratamientos.</p>
+                            <img src="https://i.imgur.com/525yQ3K.jpeg/600x200?text=Inspeccion+Visual" alt="Inspección visual" class="mt-2 rounded-lg shadow-lg border border-gold-border/20 w-full max-w-md">
                         </div>
                     </div>
-                    <div class="flex items-start gap-5">
-                        <span class="gold-gradient w-10 h-10 rounded-full flex items-center justify-center text-black font-bold text-sm flex-shrink-0">2</span>
+                    <div class="flex items-start">
+                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">2</div>
                         <div>
-                            <h4 class="text-lg font-serif gold font-medium">Análisis refractométrico</h4>
-                            <p class="text-gray-300 text-sm">Medición del índice de refracción para confirmar identidad como esmeralda.</p>
+                            <h4 class="text-xl font-serif gold font-medium mb-2">Análisis refractométrico</h4>
+                            <p class="text-gray-300">Medición del índice de refracción para confirmar identidad como esmeralda.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-5">
-                        <span class="gold-gradient w-10 h-10 rounded-full flex items-center justify-center text-black font-bold text-sm flex-shrink-0">3</span>
+                    <div class="flex items-start">
+                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">3</div>
                         <div>
-                            <h4 class="text-lg font-serif gold font-medium">Espectroscopía</h4>
-                            <p class="text-gray-300 text-sm">Identificación de elementos cromóforos (Cr, V, Fe) que determinan el color.</p>
-                            <img src="https://i.imgur.com/Q0xYe8n.png/600x200?text=Espectroscopia" alt="Espectroscopía" class="mt-2 rounded-lg w-full max-w-sm border border-gold-border/10" />
+                            <h4 class="text-xl font-serif gold font-medium mb-2">Espectroscopía</h4>
+                            <p class="text-gray-300">Identificación de elementos cromóforos (Cr, V, Fe) que determinan el color.</p>
+                            <img src="https://i.imgur.com/Q0xYe8n.png/600x200?text=Espectroscopia" alt="Espectroscopía" class="mt-2 rounded-lg shadow-lg border border-gold-border/20 w-full max-w-md">
                         </div>
                     </div>
-                    <div class="flex items-start gap-5">
-                        <span class="gold-gradient w-10 h-10 rounded-full flex items-center justify-center text-black font-bold text-sm flex-shrink-0">4</span>
+                    <div class="flex items-start">
+                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">4</div>
                         <div>
-                            <h4 class="text-lg font-serif gold font-medium">Fluorescencia UV</h4>
-                            <p class="text-gray-300 text-sm">Evaluación de reacción bajo luz ultravioleta para detectar tratamientos.</p>
+                            <h4 class="text-xl font-serif gold font-medium mb-2">Fluorescencia UV</h4>
+                            <p class="text-gray-300">Evaluación de reacción bajo luz ultravioleta para detectar tratamientos.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-5">
-                        <span class="gold-gradient w-10 h-10 rounded-full flex items-center justify-center text-black font-bold text-sm flex-shrink-0">5</span>
+                    <div class="flex items-start">
+                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">5</div>
                         <div>
-                            <h4 class="text-lg font-serif gold font-medium">Microscopía avanzada</h4>
-                            <p class="text-gray-300 text-sm">Examen detallado de inclusiones para determinar origen geográfico.</p>
+                            <h4 class="text-xl font-serif gold font-medium mb-2">Microscopía avanzada</h4>
+                            <p class="text-gray-300">Examen detallado de inclusiones para determinar origen geográfico.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Glosario -->
+            <!-- Gemological Glossary -->
             <div>
-                <h3 class="text-xl font-serif gold font-medium mb-6 border-b border-gold-border pb-3">Glosario gemológico</h3>
+                <h3 class="text-2xl font-serif gold font-medium mb-4 border-b border-gold-border pb-2">Glosario gemológico</h3>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="card-luxury p-4">
-                        <h4 class="font-serif gold font-medium">Inclusiones (Jardín)</h4>
-                        <p class="text-gray-300 text-sm">Características internas naturales como la "huella digital" de la esmeralda.</p>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Inclusiones (Jardín)</h4>
+                        <p class="text-gray-300 text-sm">Características internas naturales que son como la "huella digital" de una esmeralda, formadas durante su crecimiento.</p>
                     </div>
-                    <div class="card-luxury p-4">
-                        <h4 class="font-serif gold font-medium">Tratamiento con aceite</h4>
-                        <p class="text-gray-300 text-sm">Proceso donde se llenan fisuras con aceite para mejorar claridad.</p>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Tratamiento con aceite</h4>
+                        <p class="text-gray-300 text-sm">Proceso tradicional donde se llenan fisuras con aceite o resina para mejorar claridad y estabilidad.</p>
                     </div>
-                    <div class="card-luxury p-4">
-                        <h4 class="font-serif gold font-medium">Pleocroísmo</h4>
-                        <p class="text-gray-300 text-sm">Muestra diferentes colores desde diferentes ángulos.</p>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Pleocroísmo</h4>
+                        <p class="text-gray-300 text-sm">Fenómeno óptico donde la esmeralda muestra diferentes colores desde diferentes ángulos.</p>
                     </div>
-                    <div class="card-luxury p-4">
-                        <h4 class="font-serif gold font-medium">Dureza (Mohs)</h4>
-                        <p class="text-gray-300 text-sm">7.5-8, resistente pero no indestructible.</p>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Dureza (Escala Mohs)</h4>
+                        <p class="text-gray-300 text-sm">Las esmeraldas tienen dureza 7.5-8, lo que las hace resistentes pero no indestructibles.</p>
                     </div>
-                    <div class="card-luxury p-4">
-                        <h4 class="font-serif gold font-medium">Birrefringencia</h4>
-                        <p class="text-gray-300 text-sm">Doble refracción de la luz al pasar por el cristal.</p>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Birrefringencia</h4>
+                        <p class="text-gray-300 text-sm">Doble refracción de la luz al pasar por el cristal, característica de las esmeraldas.</p>
                     </div>
-                    <div class="card-luxury p-4">
-                        <h4 class="font-serif gold font-medium">Índice de refracción</h4>
-                        <p class="text-gray-300 text-sm">1.577-1.583, medida de desviación de la luz.</p>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Índice de refracción</h4>
+                        <p class="text-gray-300 text-sm">1.577-1.583, medida de cómo la luz se desvía al pasar a través de la gema.</p>
                     </div>
-                    <div class="card-luxury p-4">
-                        <h4 class="font-serif gold font-medium">Gravedad específica</h4>
-                        <p class="text-gray-300 text-sm">2.67-2.78, densidad comparada con el agua.</p>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Gravedad específica</h4>
+                        <p class="text-gray-300 text-sm">2.67-2.78, densidad relativa de la esmeralda comparada con el agua.</p>
                     </div>
-                    <div class="card-luxury p-4">
-                        <h4 class="font-serif gold font-medium">Cristalografía</h4>
-                        <p class="text-gray-300 text-sm">Sistema hexagonal, cristales prismáticos de seis caras.</p>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Cristalografía</h4>
+                        <p class="text-gray-300 text-sm">Sistema hexagonal, cristales prismáticos de seis caras con terminaciones planas.</p>
                     </div>
-                    <div class="card-luxury p-4">
-                        <h4 class="font-serif gold font-medium">Gotas de aceite</h4>
-                        <p class="text-gray-300 text-sm">Inclusiones fluidas con burbujas, comunes en esmeraldas colombianas.</p>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Fractura concoidea</h4>
+                        <p class="text-gray-300 text-sm">Las esmeraldas tienden a romperse con superficies curvas como el vidrio.</p>
+                    </div>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Tratamiento sin residuos</h4>
+                        <p class="text-gray-300 text-sm">Método moderno que mejora la apariencia sin dejar residuos visibles.</p>
+                    </div>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Jardin de esmeralda</h4>
+                        <p class="text-gray-300 text-sm">Término poético para describir las inclusiones características que parecen un jardín bajo aumento.</p>
+                    </div>
+                    <div class="card-dark p-4">
+                        <h4 class="text-lg font-serif gold font-medium mb-2">Gotas de aceite</h4>
+                        <p class="text-gray-300 text-sm">Inclusiones de fluidos que contienen burbujas de gas y líquido, comunes en esmeraldas colombianas.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ========== HERRAMIENTAS INTERACTIVAS ========== -->
-        <div id="interactiveTools" class="hidden card-luxury p-6 md:p-8 mb-10 animate-fade">
-            <h2 class="text-2xl md:text-3xl font-serif gold font-semibold mb-8 text-center gold-text-shadow">
-                <i class="fas fa-tools mr-3 gold"></i>Herramientas interactivas
-            </h2>
+        <!-- Interactive Tools (TARJETA OSCURA) -->
+        <div id="interactiveTools" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in">
+            <h2 class="text-3xl font-serif gold font-semibold mb-6 text-center gold-text-shadow">Herramientas Interactivas</h2>
 
-            <!-- Selector de formas -->
+            <!-- Emerald Shape Simulator -->
             <div class="mb-10">
-                <h3 class="text-xl font-serif gold font-medium mb-6 border-b border-gold-border pb-3">Forma de tallado</h3>
-                <div class="grid md:grid-cols-2 gap-8">
+                <h3 class="text-2xl font-serif gold font-medium mb-4 border-b border-gold-border pb-2">Forma de tallado</h3>
+                <div class="grid md:grid-cols-2 gap-8 calculator-grid">
                     <div>
-                        <div class="grid grid-cols-3 gap-3 shape-grid">
-                            <div class="shape-selector active" data-shape="emerald">
-                                <img src="https://i.imgur.com/nYwSbAw.png/100x100?text=Emerald" alt="Emerald" class="mx-auto w-14 h-14 object-contain" />
+                        <div class="grid grid-cols-3 gap-3 mb-6 shape-grid">
+                            <div class="shape-selector-dark cursor-pointer active" data-shape="emerald">
+                                <img src="https://i.imgur.com/nYwSbAw.png/100x100?text=Emerald" alt="Emerald Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
                                 <p>Rectangular</p>
                             </div>
-                            <div class="shape-selector" data-shape="oval">
-                                <img src="https://i.imgur.com/ltuO7pR.png/100x100?text=Oval" alt="Oval" class="mx-auto w-14 h-14 object-contain" />
+                            <div class="shape-selector-dark cursor-pointer" data-shape="oval">
+                                <img src="https://i.imgur.com/ltuO7pR.png/100x100?text=Oval" alt="Oval Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
                                 <p>Ovalada</p>
                             </div>
-                            <div class="shape-selector" data-shape="round">
-                                <img src="https://i.imgur.com/PSAR2Ct.png/100x100?text=Round" alt="Round" class="mx-auto w-14 h-14 object-contain" />
+                            <div class="shape-selector-dark cursor-pointer" data-shape="round">
+                                <img src="https://i.imgur.com/PSAR2Ct.png/100x100?text=Round" alt="Round Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
                                 <p>Redonda</p>
                             </div>
-                            <div class="shape-selector" data-shape="pear">
-                                <img src="https://i.imgur.com/OFlsNHU.png/100x100?text=Pear" alt="Pear" class="mx-auto w-14 h-14 object-contain" />
+                            <div class="shape-selector-dark cursor-pointer" data-shape="pear">
+                                <img src="https://i.imgur.com/OFlsNHU.png/100x100?text=Pear" alt="Pear Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
                                 <p>Pera</p>
                             </div>
-                            <div class="shape-selector" data-shape="cushion">
-                                <img src="https://i.imgur.com/mpoogcS.png/100x100?text=Cushion" alt="Cushion" class="mx-auto w-14 h-14 object-contain" />
+                            <div class="shape-selector-dark cursor-pointer" data-shape="cushion">
+                                <img src="https://i.imgur.com/mpoogcS.png/100x100?text=Cushion" alt="Cushion Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
                                 <p>Cojín</p>
                             </div>
-                            <div class="shape-selector" data-shape="heart">
-                                <img src="https://i.imgur.com/M0AXJ0Z.png/100x100?text=Heart" alt="Heart" class="mx-auto w-14 h-14 object-contain" />
+                            <div class="shape-selector-dark cursor-pointer" data-shape="heart">
+                                <img src="https://i.imgur.com/M0AXJ0Z.png/100x100?text=Heart" alt="Heart Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
                                 <p>Corazón</p>
                             </div>
                         </div>
 
-                        <div class="card-luxury p-5 mt-6">
-                            <h4 class="font-serif gold font-medium mb-3">Calculadora de quilates</h4>
+                        <div class="card-dark p-5 mb-4">
+                            <h4 class="text-lg font-serif gold font-medium mb-3">Calculadora de quilates</h4>
                             <div class="grid grid-cols-2 gap-3 mb-4">
                                 <div>
                                     <label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Largo (mm)</label>
-                                    <input type="number" id="length" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="6.5" step="0.1" />
+                                    <input type="number" id="length" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="6.5" step="0.1" min="0.1">
                                 </div>
                                 <div>
                                     <label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Ancho (mm)</label>
-                                    <input type="number" id="width" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="5" step="0.1" />
+                                    <input type="number" id="width" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="5" step="0.1" min="0.1">
                                 </div>
                                 <div>
                                     <label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Profundidad (mm)</label>
-                                    <input type="number" id="depth" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="3.5" step="0.1" />
+                                    <input type="number" id="depth" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="3.5" step="0.1" min="0.1">
                                 </div>
                                 <div>
-                                    <label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Forma</label>
-                                    <select id="shape" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none">
-                                        <option value="emerald">Rectangular</option>
-                                        <option value="oval">Ovalada</option>
-                                        <option value="round">Redonda</option>
-                                        <option value="pear">Pera</option>
-                                        <option value="cushion">Cojín</option>
-                                        <option value="heart">Corazón</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button onclick="calculateCarats()" class="search-btn w-full text-center justify-center flex items-center gap-2">
-                                <i class="fas fa-calculator"></i> Calcular Quilates
-                            </button>
-                            <div id="caratResult" class="mt-4 p-4 rounded-lg bg-gold/5 border border-gold-border/20 hidden">
-                                <h4 class="font-serif gold font-medium mb-1">Resultado:</h4>
-                                <p class="text-2xl font-serif gold font-bold" id="caratValue">0.00 ct</p>
-                                <p class="text-gray-400 text-sm mt-1" id="dimensionText">Dimensiones: 0mm × 0mm × 0mm</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-center">
-                        <div id="shapeDisplay" class="relative">
-                            <img src="https://i.imgur.com
+                                    <label class="block text-gray-400 text-xs uppercase tracking-wider
