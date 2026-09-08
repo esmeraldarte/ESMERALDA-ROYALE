@@ -145,22 +145,159 @@
         }
 
         /* ============================================================
-           NUEVOS ESTILOS DARK LUXURY (AÑADIDOS SIN BORRAR NADA)
+           NUEVOS ESTILOS DARK LUXURY CON TEXTURAS Y EFECTOS
            ============================================================ */
         
-        /* Fondo general oscuro */
+        /* --- FONDO CON PATRÓN GEOMÉTRICO DE FACETAS --- */
         body {
             background-color: #0a0a0a;
             color: #e5e0d8;
             font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            position: relative;
         }
 
-        /* Fuente elegante */
+        /* Patrón de fondo con facetas de esmeralda */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background-image: 
+                /* Patrón de rombos/facetas */
+                linear-gradient(45deg, rgba(18, 40, 18, 0.15) 0%, transparent 30%),
+                linear-gradient(-45deg, rgba(212, 175, 55, 0.02) 0%, transparent 40%),
+                /* Textura de fondo sutil */
+                radial-gradient(circle at 20% 50%, rgba(26, 50, 26, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(18, 40, 18, 0.15) 0%, transparent 50%);
+            background-size: 100% 100%;
+            pointer-events: none;
+        }
+
+        /* Patrón de facetas geométricas superpuesto */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background-image: 
+                /* Triángulos que simulan facetas */
+                repeating-linear-gradient(60deg, 
+                    transparent 0px, 
+                    transparent 120px,
+                    rgba(212, 175, 55, 0.008) 120px,
+                    rgba(212, 175, 55, 0.008) 121px,
+                    transparent 121px,
+                    transparent 241px
+                ),
+                repeating-linear-gradient(-60deg, 
+                    transparent 0px, 
+                    transparent 120px,
+                    rgba(212, 175, 55, 0.008) 120px,
+                    rgba(212, 175, 55, 0.008) 121px,
+                    transparent 121px,
+                    transparent 241px
+                ),
+                repeating-linear-gradient(0deg, 
+                    transparent 0px, 
+                    transparent 80px,
+                    rgba(212, 175, 55, 0.006) 80px,
+                    rgba(212, 175, 55, 0.006) 81px,
+                    transparent 81px,
+                    transparent 161px
+                );
+            background-size: 200px 200px;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        /* --- EFECTO DE BRILLO EN MOVIMIENTO (SHIMMER) --- */
+        .shimmer-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(212, 175, 55, 0.02) 45%,
+                rgba(212, 175, 55, 0.05) 50%,
+                rgba(212, 175, 55, 0.02) 55%,
+                transparent 70%
+            );
+            animation: shimmer 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* --- DESTELLOS DE LUZ (PARTÍCULAS) --- */
+        .sparkle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.4), transparent);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            opacity: 0;
+        }
+
+        .sparkle:nth-child(1) { top: 10%; left: 10%; animation-duration: 25s; animation-delay: 0s; width: 4px; height: 4px; }
+        .sparkle:nth-child(2) { top: 25%; left: 85%; animation-duration: 18s; animation-delay: 2s; width: 2px; height: 2px; }
+        .sparkle:nth-child(3) { top: 50%; left: 20%; animation-duration: 22s; animation-delay: 4s; width: 5px; height: 5px; }
+        .sparkle:nth-child(4) { top: 70%; left: 75%; animation-duration: 20s; animation-delay: 1s; width: 3px; height: 3px; }
+        .sparkle:nth-child(5) { top: 85%; left: 30%; animation-duration: 28s; animation-delay: 3s; width: 4px; height: 4px; }
+        .sparkle:nth-child(6) { top: 15%; left: 50%; animation-duration: 16s; animation-delay: 5s; width: 2px; height: 2px; }
+        .sparkle:nth-child(7) { top: 40%; left: 60%; animation-duration: 24s; animation-delay: 2s; width: 3px; height: 3px; }
+        .sparkle:nth-child(8) { top: 65%; left: 5%; animation-duration: 19s; animation-delay: 4s; width: 4px; height: 4px; }
+        .sparkle:nth-child(9) { top: 90%; left: 55%; animation-duration: 26s; animation-delay: 1s; width: 2px; height: 2px; }
+        .sparkle:nth-child(10) { top: 30%; left: 40%; animation-duration: 21s; animation-delay: 3s; width: 3px; height: 3px; }
+        .sparkle:nth-child(11) { top: 55%; left: 90%; animation-duration: 23s; animation-delay: 5s; width: 5px; height: 5px; }
+        .sparkle:nth-child(12) { top: 75%; left: 45%; animation-duration: 27s; animation-delay: 2s; width: 3px; height: 3px; }
+
+        @keyframes float {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            10% { opacity: 0.8; }
+            50% { opacity: 0.3; transform: translateY(-100px) scale(1.2); }
+            90% { opacity: 0.6; }
+            100% { opacity: 0; transform: translateY(-200px) scale(0.8); }
+        }
+
+        /* ============================================================
+           ESTILOS DARK LUXURY EXISTENTES (MEJORADOS)
+           ============================================================ */
+        
         .font-serif {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Colores dorados */
         .gold {
             color: #d4af37;
         }
@@ -170,18 +307,26 @@
         .gold-text-shadow {
             text-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
         }
-        .gold-gradient {
-            background: linear-gradient(135deg, #d4af37, #b8962e);
-        }
 
-        /* HEADER DARK LUXURY - Logo a la izquierda, buscador a la derecha */
         .dark-luxury-header {
-            background: radial-gradient(circle at 30% 10%, #0f1f0f, #050805 90%);
+            background: radial-gradient(circle at 30% 10%, rgba(15, 31, 15, 0.95), rgba(5, 8, 5, 0.98) 90%);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             padding: 1rem 0;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
+        }
+        /* Sutil brillo en el header */
+        .dark-luxury-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
         }
 
-        /* Buscador oscuro */
         .search-input-dark {
             background: rgba(10, 15, 10, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -200,7 +345,7 @@
         .search-input-dark:focus {
             outline: none;
             border-color: #d4af37;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.08);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.08), inset 0 0 30px rgba(212, 175, 55, 0.03);
             background: rgba(10, 15, 10, 0.95);
         }
 
@@ -223,7 +368,6 @@
             box-shadow: 0 0 35px rgba(212, 175, 55, 0.15);
         }
 
-        /* Subtexto elegante */
         .subtext-luxury {
             font-family: 'Playfair Display', serif;
             font-size: 14px;
@@ -236,9 +380,8 @@
             color: #d4af37;
         }
 
-        /* Botones lujosos */
         .btn-luxury {
-            background: linear-gradient(145deg, #1a2a1a, #0f1a0f);
+            background: linear-gradient(145deg, rgba(26, 42, 26, 0.9), rgba(15, 26, 15, 0.95));
             border: 1px solid rgba(212, 175, 55, 0.2);
             color: #e5e0d8;
             padding: 0.75rem 1.8rem;
@@ -248,10 +391,26 @@
             font-weight: 400;
             letter-spacing: 0.3px;
             cursor: pointer;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.05), transparent 60%);
+            transition: all 0.5s ease;
+        }
+        .btn-luxury:hover::before {
+            transform: scale(1.5);
         }
         .btn-luxury:hover {
             border-color: #d4af37;
-            background: linear-gradient(145deg, #1f301f, #142214);
+            background: linear-gradient(145deg, rgba(31, 48, 31, 0.95), rgba(20, 34, 20, 0.95));
             transform: translateY(-2px);
             box-shadow: 0 8px 35px rgba(212, 175, 55, 0.1);
         }
@@ -259,22 +418,123 @@
             color: #d4af37;
         }
 
-        /* Tarjetas oscuras con efecto vidrio */
+        /* --- TARJETAS CON EFECTO VIDRIO PREMIUM Y TEXTURA --- */
         .card-dark {
-            background: rgba(18, 28, 18, 0.7);
-            backdrop-filter: blur(12px);
+            background: rgba(18, 28, 18, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(212, 175, 55, 0.1);
             border-radius: 16px;
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-        }
-        .card-dark:hover {
-            border-color: rgba(212, 175, 55, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.03);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Selector de formas oscuro */
+        /* Textura sutil dentro de las tarjetas */
+        .card-dark::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, 
+                    transparent 0px, 
+                    transparent 2px,
+                    rgba(212, 175, 55, 0.01) 2px,
+                    rgba(212, 175, 55, 0.01) 3px,
+                    transparent 3px,
+                    transparent 5px
+                );
+            pointer-events: none;
+            border-radius: 16px;
+        }
+
+        /* Efecto de brillo en las tarjetas al pasar el mouse */
+        .card-dark::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.02), transparent 60%);
+            transition: all 0.8s ease;
+            pointer-events: none;
+            border-radius: 16px;
+        }
+        .card-dark:hover::after {
+            top: -50%;
+            left: -50%;
+        }
+
+        .card-dark:hover {
+            border-color: rgba(212, 175, 55, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.05);
+        }
+
+        /* --- VARIANTE DE TARJETA CON BORDE DORADO --- */
+        .card-dark-gold {
+            background: rgba(18, 28, 18, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        .card-dark-gold::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), transparent, rgba(212, 175, 55, 0.1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .footer-dark {
+            background: linear-gradient(180deg, rgba(10, 15, 10, 0.95), rgba(5, 8, 5, 0.98));
+            border-top: 1px solid rgba(212, 175, 55, 0.08);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a2a1a;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a3f2a;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* --- SELECTOR DE FORMAS CON ESTILO --- */
         .shape-selector-dark {
             background: rgba(18, 28, 18, 0.6);
             border: 1px solid rgba(212, 175, 55, 0.12);
@@ -288,6 +548,7 @@
         .shape-selector-dark:hover {
             border-color: rgba(212, 175, 55, 0.35);
             transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         .shape-selector-dark.active {
             border: 2px solid #d4af37;
@@ -304,7 +565,7 @@
             color: #d4af37;
         }
 
-        /* Tabla oscura */
+        /* --- TABLA OSCURA --- */
         .table-dark {
             border-collapse: collapse;
             width: 100%;
@@ -334,40 +595,8 @@
             background: rgba(212, 175, 55, 0.04);
         }
 
-        /* Footer oscuro */
-        .footer-dark {
-            background: linear-gradient(180deg, #0a0f0a, #050805);
-            border-top: 1px solid rgba(212, 175, 55, 0.08);
-        }
-
-        /* Scrollbar personalizada */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1a2a1a;
-            border-radius: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2a3f2a;
-        }
-
-        /* Animación de entrada */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
         /* ============================================================
-           MEDIA QUERIES (MANTENIENDO LAS ORIGINALES Y AÑADIENDO NUEVAS)
+           MEDIA QUERIES
            ============================================================ */
         @media (max-width: 640px) {
             .action-buttons {
@@ -439,7 +668,6 @@
             .list-disc {
                 padding-left: 1.25rem;
             }
-            /* Nuevos ajustes responsive para el header */
             .dark-luxury-header .flex {
                 flex-direction: column !important;
                 align-items: center !important;
@@ -472,18 +700,32 @@
         }
     </style>
 </head>
-<body class="bg-[#0a0a0a] font-sans">
+<body>
 
-    <!-- WhatsApp Float Button (SIN CAMBIOS) -->
+    <!-- DESTELLOS DE LUZ (PARTÍCULAS) -->
+    <div class="sparkle-container">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
     <a href="https://wa.me/573184848399?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20sus%20esmeraldas" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
         <span class="tooltip">Comunícate con nosotros</span>
     </a>
 
-    <!-- ============================================================
-         HEADER DARK LUXURY - LOGO A LA IZQUIERDA, BUSCADOR A LA DERECHA
-         ============================================================ -->
-    <header class="dark-luxury-header">
+    <!-- HEADER DARK LUXURY -->
+    <header class="dark-luxury-header shimmer-effect">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
                 
@@ -496,24 +738,15 @@
                 <div class="flex-1 w-full">
                     <div class="relative max-w-2xl ml-auto">
                         <div class="flex items-center gap-3">
-                            <input type="text" id="certificateSearch" placeholder="Buscar certificado por código"
-                                class="search-input-dark">
+                            <input type="text" id="certificateSearch" placeholder="Buscar certificado por código" class="search-input-dark">
                             <button onclick="searchCertificate()" class="search-btn-dark">
                                 <i class="fas fa-search mr-2"></i> Buscar
                             </button>
                         </div>
-
-                        <!-- Textos descriptivos (se mantienen) -->
                         <div class="mt-3 text-right space-y-0.5">
-                            <p class="subtext-luxury">
-                                <i class="fas fa-gem mr-1"></i> Especialistas en esmeraldas colombianas
-                            </p>
-                            <p class="subtext-luxury text-xs opacity-70">
-                                Certificamos otras gemas naturales bajo los mismos estándares gemológicos.
-                            </p>
-                            <p class="subtext-luxury text-xs opacity-50">
-                                Certificación local con verificación técnica y control gemológico interno.
-                            </p>
+                            <p class="subtext-luxury"><i class="fas fa-gem mr-1"></i> Especialistas en esmeraldas colombianas</p>
+                            <p class="subtext-luxury text-xs opacity-70">Certificamos otras gemas naturales bajo los mismos estándares gemológicos.</p>
+                            <p class="subtext-luxury text-xs opacity-50">Certificación local con verificación técnica y control gemológico interno.</p>
                         </div>
                     </div>
                 </div>
@@ -522,32 +755,20 @@
         </div>
     </header>
 
-    <!-- ============================================================
-         MAIN CONTENT - PARTE 1 (hasta el final de la sección de herramientas)
-         ============================================================ -->
+    <!-- MAIN CONTENT -->
     <main class="container mx-auto px-4 py-8">
 
         <!-- Action Buttons -->
         <div class="flex flex-col md:flex-row justify-center gap-4 mb-12 action-buttons fade-in">
-            <button onclick="toggleCareGuide()" class="btn-luxury flex items-center justify-center gap-2">
-                <i class="fas fa-gem"></i> Cuidados especiales para mis joyas
-            </button>
-            <button onclick="toggleGemLab()" class="btn-luxury flex items-center justify-center gap-2">
-                <i class="fas fa-microscope"></i> Laboratorio Gemológico
-            </button>
-            <button onclick="toggleInteractiveTools()" class="btn-luxury flex items-center justify-center gap-2">
-                <i class="fas fa-tools"></i> Herramientas interactivas
-            </button>
-            <button onclick="toggleOtherGems()" class="btn-luxury flex items-center justify-center gap-2">
-                <i class="fas fa-diamond"></i> Otras gemas certificadas
-            </button>
+            <button onclick="toggleCareGuide()" class="btn-luxury flex items-center justify-center gap-2"><i class="fas fa-gem"></i> Cuidados especiales para mis joyas</button>
+            <button onclick="toggleGemLab()" class="btn-luxury flex items-center justify-center gap-2"><i class="fas fa-microscope"></i> Laboratorio Gemológico</button>
+            <button onclick="toggleInteractiveTools()" class="btn-luxury flex items-center justify-center gap-2"><i class="fas fa-tools"></i> Herramientas interactivas</button>
+            <button onclick="toggleOtherGems()" class="btn-luxury flex items-center justify-center gap-2"><i class="fas fa-diamond"></i> Otras gemas certificadas</button>
         </div>
 
         <!-- Special Care Guide -->
-        <div id="careGuide" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in">
-            <h2 class="text-2xl font-serif gold font-semibold mb-6 gold-text-shadow">
-                <i class="fas fa-hand-holding-heart mr-3 gold"></i>Cuidados especiales para tus piedras preciosas
-            </h2>
+        <div id="careGuide" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in shimmer-effect">
+            <h2 class="text-2xl font-serif gold font-semibold mb-6 gold-text-shadow"><i class="fas fa-hand-holding-heart mr-3 gold"></i>Cuidados especiales para tus piedras preciosas</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div>
                     <h3 class="text-xl font-serif gold font-medium mb-3"><i class="fas fa-hand-holding-water mr-2"></i>Limpieza</h3>
@@ -589,7 +810,7 @@
         </div>
 
         <!-- Gemological Lab -->
-        <div id="gemLab" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in">
+        <div id="gemLab" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in shimmer-effect">
             <h2 class="text-3xl font-serif gold font-semibold mb-6 text-center gold-text-shadow">Laboratorio Gemológico</h2>
 
             <div class="mb-10">
@@ -622,7 +843,7 @@
                 <h3 class="text-2xl font-serif gold font-medium mb-4 border-b border-gold-border pb-2">Nuestro proceso de análisis gemológico paso a paso</h3>
                 <div class="flex flex-col space-y-8">
                     <div class="flex items-start">
-                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">1</div>
+                        <div class="bg-emerald-600 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">1</div>
                         <div>
                             <h4 class="text-xl font-serif gold font-medium mb-2">Inspección visual inicial</h4>
                             <p class="text-gray-300">Examen con aumento 10x para identificar inclusiones características, color y posibles tratamientos.</p>
@@ -630,14 +851,14 @@
                         </div>
                     </div>
                     <div class="flex items-start">
-                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">2</div>
+                        <div class="bg-emerald-600 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">2</div>
                         <div>
                             <h4 class="text-xl font-serif gold font-medium mb-2">Análisis refractométrico</h4>
                             <p class="text-gray-300">Medición del índice de refracción para confirmar identidad como esmeralda.</p>
                         </div>
                     </div>
                     <div class="flex items-start">
-                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">3</div>
+                        <div class="bg-emerald-600 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">3</div>
                         <div>
                             <h4 class="text-xl font-serif gold font-medium mb-2">Espectroscopía</h4>
                             <p class="text-gray-300">Identificación de elementos cromóforos (Cr, V, Fe) que determinan el color.</p>
@@ -645,14 +866,14 @@
                         </div>
                     </div>
                     <div class="flex items-start">
-                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">4</div>
+                        <div class="bg-emerald-600 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">4</div>
                         <div>
                             <h4 class="text-xl font-serif gold font-medium mb-2">Fluorescencia UV</h4>
                             <p class="text-gray-300">Evaluación de reacción bajo luz ultravioleta para detectar tratamientos.</p>
                         </div>
                     </div>
                     <div class="flex items-start">
-                        <div class="gold-gradient text-black font-bold rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">5</div>
+                        <div class="bg-emerald-600 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">5</div>
                         <div>
                             <h4 class="text-xl font-serif gold font-medium mb-2">Microscopía avanzada</h4>
                             <p class="text-gray-300">Examen detallado de inclusiones para determinar origen geográfico.</p>
@@ -664,60 +885,21 @@
             <div>
                 <h3 class="text-2xl font-serif gold font-medium mb-4 border-b border-gold-border pb-2">Glosario gemológico</h3>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Inclusiones (Jardín)</h4>
-                        <p class="text-gray-300 text-sm">Características internas naturales que son como la "huella digital" de una esmeralda, formadas durante su crecimiento.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Tratamiento con aceite</h4>
-                        <p class="text-gray-300 text-sm">Proceso tradicional donde se llenan fisuras con aceite o resina para mejorar claridad y estabilidad.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Pleocroísmo</h4>
-                        <p class="text-gray-300 text-sm">Fenómeno óptico donde la esmeralda muestra diferentes colores desde diferentes ángulos.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Dureza (Escala Mohs)</h4>
-                        <p class="text-gray-300 text-sm">Las esmeraldas tienen dureza 7.5-8, lo que las hace resistentes pero no indestructibles.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Birrefringencia</h4>
-                        <p class="text-gray-300 text-sm">Doble refracción de la luz al pasar por el cristal, característica de las esmeraldas.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Índice de refracción</h4>
-                        <p class="text-gray-300 text-sm">1.577-1.583, medida de cómo la luz se desvía al pasar a través de la gema.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Gravedad específica</h4>
-                        <p class="text-gray-300 text-sm">2.67-2.78, densidad relativa de la esmeralda comparada con el agua.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Cristalografía</h4>
-                        <p class="text-gray-300 text-sm">Sistema hexagonal, cristales prismáticos de seis caras con terminaciones planas.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Fractura concoidea</h4>
-                        <p class="text-gray-300 text-sm">Las esmeraldas tienden a romperse con superficies curvas como el vidrio.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Tratamiento sin residuos</h4>
-                        <p class="text-gray-300 text-sm">Método moderno que mejora la apariencia sin dejar residuos visibles.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Jardin de esmeralda</h4>
-                        <p class="text-gray-300 text-sm">Término poético para describir las inclusiones características que parecen un jardín bajo aumento.</p>
-                    </div>
-                    <div class="card-dark p-4">
-                        <h4 class="text-lg font-serif gold font-medium mb-2">Gotas de aceite</h4>
-                        <p class="text-gray-300 text-sm">Inclusiones de fluidos que contienen burbujas de gas y líquido, comunes en esmeraldas colombianas.</p>
-                    </div>
+                    <div class="card-dark p-4"><h4 class="text-lg font-serif gold font-medium mb-2">Inclusiones (Jardín)</h4><p class="text-gray-300 text-sm">Características internas naturales que son como la "huella digital" de una esmeralda.</p></div>
+                    <div class="card-dark p-4"><h4 class="text-lg font-serif gold font-medium mb-2">Tratamiento con aceite</h4><p class="text-gray-300 text-sm">Proceso donde se llenan fisuras con aceite o resina para mejorar claridad.</p></div>
+                    <div class="card-dark p-4"><h4 class="text-lg font-serif gold font-medium mb-2">Pleocroísmo</h4><p class="text-gray-300 text-sm">Muestra diferentes colores desde diferentes ángulos.</p></div>
+                    <div class="card-dark p-4"><h4 class="text-lg font-serif gold font-medium mb-2">Dureza (Mohs)</h4><p class="text-gray-300 text-sm">7.5-8, resistente pero no indestructible.</p></div>
+                    <div class="card-dark p-4"><h4 class="text-lg font-serif gold font-medium mb-2">Birrefringencia</h4><p class="text-gray-300 text-sm">Doble refracción de la luz al pasar por el cristal.</p></div>
+                    <div class="card-dark p-4"><h4 class="text-lg font-serif gold font-medium mb-2">Índice de refracción</h4><p class="text-gray-300 text-sm">1.577-1.583, medida de desviación de la luz.</p></div>
+                    <div class="card-dark p-4"><h4 class="text-lg font-serif gold font-medium mb-2">Gravedad específica</h4><p class="text-gray-300 text-sm">2.67-2.78, densidad comparada con el agua.</p></div>
+                    <div class="card-dark p-4"><h4 class="text-lg font-serif gold font-medium mb-2">Cristalografía</h4><p class="text-gray-300 text-sm">Sistema hexagonal, cristales prismáticos de seis caras.</p></div>
+                    <div class="card-dark p-4"><h4 class="text-lg font-serif gold font-medium mb-2">Gotas de aceite</h4><p class="text-gray-300 text-sm">Inclusiones fluidas con burbujas, comunes en esmeraldas colombianas.</p></div>
                 </div>
             </div>
         </div>
 
         <!-- Interactive Tools -->
-        <div id="interactiveTools" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in">
+        <div id="interactiveTools" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in shimmer-effect">
             <h2 class="text-3xl font-serif gold font-semibold mb-6 text-center gold-text-shadow">Herramientas Interactivas</h2>
 
             <div class="mb-10">
@@ -725,63 +907,27 @@
                 <div class="grid md:grid-cols-2 gap-8 calculator-grid">
                     <div>
                         <div class="grid grid-cols-3 gap-3 mb-6 shape-grid">
-                            <div class="shape-selector-dark cursor-pointer active" data-shape="emerald">
-                                <img src="https://i.imgur.com/nYwSbAw.png/100x100?text=Emerald" alt="Emerald Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
-                                <p>Rectangular</p>
-                            </div>
-                            <div class
-                                                            <div class="shape-selector-dark cursor-pointer" data-shape="oval">
-                                <img src="https://i.imgur.com/ltuO7pR.png/100x100?text=Oval" alt="Oval Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
-                                <p>Ovalada</p>
-                            </div>
-                            <div class="shape-selector-dark cursor-pointer" data-shape="round">
-                                <img src="https://i.imgur.com/PSAR2Ct.png/100x100?text=Round" alt="Round Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
-                                <p>Redonda</p>
-                            </div>
-                            <div class="shape-selector-dark cursor-pointer" data-shape="pear">
-                                <img src="https://i.imgur.com/OFlsNHU.png/100x100?text=Pear" alt="Pear Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
-                                <p>Pera</p>
-                            </div>
-                            <div class="shape-selector-dark cursor-pointer" data-shape="cushion">
-                                <img src="https://i.imgur.com/mpoogcS.png/100x100?text=Cushion" alt="Cushion Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
-                                <p>Cojín</p>
-                            </div>
-                            <div class="shape-selector-dark cursor-pointer" data-shape="heart">
-                                <img src="https://i.imgur.com/M0AXJ0Z.png/100x100?text=Heart" alt="Heart Cut" class="mx-auto mb-1 w-16 h-16 object-contain">
-                                <p>Corazón</p>
-                            </div>
+                            <div class="shape-selector-dark cursor-pointer active" data-shape="emerald"><img src="https://i.imgur.com/nYwSbAw.png/100x100?text=Emerald" alt="Emerald Cut" class="mx-auto mb-1 w-16 h-16 object-contain"><p>Rectangular</p></div>
+                            <div class="shape-selector-dark cursor-pointer" data-shape="oval"><img src="https://i.imgur.com/ltuO7pR.png/100x100?text=Oval" alt="Oval Cut" class="mx-auto mb-1 w-16 h-16 object-contain"><p>Ovalada</p></div>
+                            <div class="shape-selector-dark cursor-pointer" data-shape="round"><img src="https://i.imgur.com/PSAR2Ct.png/100x100?text=Round" alt="Round Cut" class="mx-auto mb-1 w-16 h-16 object-contain"><p>Redonda</p></div>
+                            <div class="shape-selector-dark cursor-pointer" data-shape="pear"><img src="https://i.imgur.com/OFlsNHU.png/100x100?text=Pear" alt="Pear Cut" class="mx-auto mb-1 w-16 h-16 object-contain"><p>Pera</p></div>
+                            <div class="shape-selector-dark cursor-pointer" data-shape="cushion"><img src="https://i.imgur.com/mpoogcS.png/100x100?text=Cushion" alt="Cushion Cut" class="mx-auto mb-1 w-16 h-16 object-contain"><p>Cojín</p></div>
+                            <div class="shape-selector-dark cursor-pointer" data-shape="heart"><img src="https://i.imgur.com/M0AXJ0Z.png/100x100?text=Heart" alt="Heart Cut" class="mx-auto mb-1 w-16 h-16 object-contain"><p>Corazón</p></div>
                         </div>
 
                         <div class="card-dark p-5 mb-4">
                             <h4 class="text-lg font-serif gold font-medium mb-3">Calculadora de quilates</h4>
                             <div class="grid grid-cols-2 gap-3 mb-4">
-                                <div>
-                                    <label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Largo (mm)</label>
-                                    <input type="number" id="length" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="6.5" step="0.1" min="0.1">
-                                </div>
-                                <div>
-                                    <label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Ancho (mm)</label>
-                                    <input type="number" id="width" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="5" step="0.1" min="0.1">
-                                </div>
-                                <div>
-                                    <label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Profundidad (mm)</label>
-                                    <input type="number" id="depth" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="3.5" step="0.1" min="0.1">
-                                </div>
-                                <div>
-                                    <label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Forma</label>
+                                <div><label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Largo (mm)</label><input type="number" id="length" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="6.5" step="0.1" min="0.1"></div>
+                                <div><label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Ancho (mm)</label><input type="number" id="width" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="5" step="0.1" min="0.1"></div>
+                                <div><label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Profundidad (mm)</label><input type="number" id="depth" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none" value="3.5" step="0.1" min="0.1"></div>
+                                <div><label class="block text-gray-400 text-xs uppercase tracking-wider mb-1">Forma</label>
                                     <select id="shape" class="w-full px-3 py-2 rounded-lg bg-black/40 border border-gold-border/20 text-gray-200 focus:border-gold focus:outline-none">
-                                        <option value="emerald">Rectangular</option>
-                                        <option value="oval">Ovalada</option>
-                                        <option value="round">Redonda</option>
-                                        <option value="pear">Pera</option>
-                                        <option value="cushion">Cojín</option>
-                                        <option value="heart">Corazón</option>
+                                        <option value="emerald">Rectangular</option><option value="oval">Ovalada</option><option value="round">Redonda</option><option value="pear">Pera</option><option value="cushion">Cojín</option><option value="heart">Corazón</option>
                                     </select>
                                 </div>
                             </div>
-                            <button onclick="calculateCarats()" class="search-btn-dark w-full text-center justify-center flex items-center gap-2">
-                                <i class="fas fa-calculator"></i> Calcular Quilates
-                            </button>
+                            <button onclick="calculateCarats()" class="search-btn-dark w-full text-center justify-center flex items-center gap-2"><i class="fas fa-calculator"></i> Calcular Quilates</button>
                             <div id="caratResult" class="mt-4 p-4 rounded-lg bg-gold/5 border border-gold-border/20 hidden">
                                 <h4 class="font-serif gold font-medium mb-1">Resultado:</h4>
                                 <p class="text-2xl font-serif gold font-bold" id="caratValue">0.00 ct</p>
@@ -803,236 +949,79 @@
 
             <!-- Emerald Production Map -->
             <div>
-                <h3 class="text-2xl font-serif gold font-medium mb-4 border-b border-gold-border pb-2">
-                    Mapa de zonas productoras de esmeraldas en Colombia
-                </h3>
-                
+                <h3 class="text-2xl font-serif gold font-medium mb-4 border-b border-gold-border pb-2">Mapa de zonas productoras de esmeraldas en Colombia</h3>
                 <div class="map-image-container rounded-lg overflow-hidden flex items-center justify-center p-2 border border-gold-border/20 bg-black/30">
-                    <img 
-                        id="mapImage" 
-                        src="https://i.imgur.com/LXoEDkw.jpeg" 
-                        alt="Mapa de zonas esmeralderas de Colombia" 
-                        class="max-w-full h-auto object-contain rounded-lg"
-                        style="aspect-ratio: 3 / 2;"
-                    >
+                    <img id="mapImage" src="https://i.imgur.com/LXoEDkw.jpeg" alt="Mapa de zonas esmeralderas de Colombia" class="max-w-full h-auto object-contain rounded-lg" style="aspect-ratio: 3 / 2;">
                 </div>
             </div>
 
             <div class="mt-4 grid md:grid-cols-3 gap-4">
-                <div class="card-dark p-3">
-                    <h4 class="font-serif gold font-medium mb-1">Muzo</h4>
-                    <p class="text-sm text-gray-300">Consideradas las esmeraldas más valiosas del mundo, con un verde intenso y tonos azulados característicos.</p>
-                </div>
-                <div class="card-dark p-3">
-                    <h4 class="font-serif gold font-medium mb-1">Chivor</h4>
-                    <p class="text-sm text-gray-300">Esmeraldas con tonos más claros y brillantes, conocidas por su alta transparencia y menor cantidad de inclusiones.</p>
-                </div>
-                <div class="card-dark p-3">
-                    <h4 class="font-serif gold font-medium mb-1">Coscuez</h4>
-                    <p class="text-sm text-gray-300">Producen piedras con un verde profundo y excelente claridad, con inclusiones características que las hacen únicas.</p>
-                </div>
+                <div class="card-dark p-3"><h4 class="font-serif gold font-medium mb-1">Muzo</h4><p class="text-sm text-gray-300">Consideradas las esmeraldas más valiosas del mundo, con un verde intenso y tonos azulados característicos.</p></div>
+                <div class="card-dark p-3"><h4 class="font-serif gold font-medium mb-1">Chivor</h4><p class="text-sm text-gray-300">Esmeraldas con tonos más claros y brillantes, conocidas por su alta transparencia y menor cantidad de inclusiones.</p></div>
+                <div class="card-dark p-3"><h4 class="font-serif gold font-medium mb-1">Coscuez</h4><p class="text-sm text-gray-300">Producen piedras con un verde profundo y excelente claridad, con inclusiones características que las hacen únicas.</p></div>
             </div>
         </div>
 
         <!-- Other Gems Section -->
-        <div id="otherGems" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in">
+        <div id="otherGems" class="hidden card-dark p-6 md:p-8 rounded-lg mb-8 fade-in shimmer-effect">
             <h2 class="text-3xl font-serif gold font-semibold mb-6 text-center gold-text-shadow">Otras Gemas Preciosas</h2>
-            
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Diamond -->
-                <div class="card-dark p-4">
-                    <img src="https://i.imgur.com/Nby8yp4.jpeg" alt="Diamante" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10">
-                    <h3 class="text-xl font-serif gold font-medium mb-2">Diamante</h3>
-                    <p class="text-gray-300 text-sm mb-2">El material natural más duro conocido, con índice de refracción de 2.42.</p>
-                    <div class="flex items-center text-sm text-gray-400">
-                        <i class="fas fa-gem mr-1 gold"></i>
-                        <span>Dureza: 10 (Mohs)</span>
-                    </div>
-                </div>
-                
-                <!-- Ruby -->
-                <div class="card-dark p-4">
-                    <img src="https://i.imgur.com/T2lxTHZ.jpeg" alt="Rubí" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10">
-                    <h3 class="text-xl font-serif gold font-medium mb-2">Rubí</h3>
-                    <p class="text-gray-300 text-sm mb-2">Variedad roja del corindón, considerado una de las cuatro gemas preciosas.</p>
-                    <div class="flex items-center text-sm text-gray-400">
-                        <i class="fas fa-gem mr-1 gold"></i>
-                        <span>Dureza: 9 (Mohs)</span>
-                    </div>
-                </div>
-                
-                <!-- Sapphire -->
-                <div class="card-dark p-4">
-                    <img src="https://i.imgur.com/pvjLUeQ.jpeg" alt="Zafiro" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10">
-                    <h3 class="text-xl font-serif gold font-medium mb-2">Zafiro</h3>
-                    <p class="text-gray-300 text-sm mb-2">Variedad azul del corindón, aunque puede encontrarse en otros colores excepto rojo.</p>
-                    <div class="flex items-center text-sm text-gray-400">
-                        <i class="fas fa-gem mr-1 gold"></i>
-                        <span>Dureza: 9 (Mohs)</span>
-                    </div>
-                </div>
-                
-                <!-- Aquamarine -->
-                <div class="card-dark p-4">
-                    <img src="https://i.imgur.com/DHbl19I.jpeg" alt="Aguamarina" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10">
-                    <h3 class="text-xl font-serif gold font-medium mb-2">Aguamarina</h3>
-                    <p class="text-gray-300 text-sm mb-2">Variedad azul-verdosa del berilo, muy valorada en joyería por su transparencia.</p>
-                    <div class="flex items-center text-sm text-gray-400">
-                        <i class="fas fa-gem mr-1 gold"></i>
-                        <span>Dureza: 7.5-8 (Mohs)</span>
-                    </div>
-                </div>
-                
-                <!-- Tanzanite -->
-                <div class="card-dark p-4">
-                    <img src="https://i.imgur.com/E3BdgjT.jpeg" alt="Tanzanita" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10">
-                    <h3 class="text-xl font-serif gold font-medium mb-2">Tanzanita</h3>
-                    <p class="text-gray-300 text-sm mb-2">Variedad azul-violeta de zoisita, encontrada solo en Tanzania.</p>
-                    <div class="flex items-center text-sm text-gray-400">
-                        <i class="fas fa-gem mr-1 gold"></i>
-                        <span>Dureza: 6.5-7 (Mohs)</span>
-                    </div>
-                </div>
-                
-                <!-- Topaz -->
-                <div class="card-dark p-4">
-                    <img src="https://i.imgur.com/9awjPud.jpeg" alt="Topacio" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10">
-                    <h3 class="text-xl font-serif gold font-medium mb-2">Topacio</h3>
-                    <p class="text-gray-300 text-sm mb-2">Gema silicato de aluminio y flúor, disponible en varios colores.</p>
-                    <div class="flex items-center text-sm text-gray-400">
-                        <i class="fas fa-gem mr-1 gold"></i>
-                        <span>Dureza: 8 (Mohs)</span>
-                    </div>
-                </div>
+                <div class="card-dark p-4"><img src="https://i.imgur.com/Nby8yp4.jpeg" alt="Diamante" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10"><h3 class="text-xl font-serif gold font-medium mb-2">Diamante</h3><p class="text-gray-300 text-sm mb-2">El material natural más duro conocido, con índice de refracción de 2.42.</p><div class="flex items-center text-sm text-gray-400"><i class="fas fa-gem mr-1 gold"></i><span>Dureza: 10 (Mohs)</span></div></div>
+                <div class="card-dark p-4"><img src="https://i.imgur.com/T2lxTHZ.jpeg" alt="Rubí" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10"><h3 class="text-xl font-serif gold font-medium mb-2">Rubí</h3><p class="text-gray-300 text-sm mb-2">Variedad roja del corindón, considerado una de las cuatro gemas preciosas.</p><div class="flex items-center text-sm text-gray-400"><i class="fas fa-gem mr-1 gold"></i><span>Dureza: 9 (Mohs)</span></div></div>
+                <div class="card-dark p-4"><img src="https://i.imgur.com/pvjLUeQ.jpeg" alt="Zafiro" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10"><h3 class="text-xl font-serif gold font-medium mb-2">Zafiro</h3><p class="text-gray-300 text-sm mb-2">Variedad azul del corindón, aunque puede encontrarse en otros colores excepto rojo.</p><div class="flex items-center text-sm text-gray-400"><i class="fas fa-gem mr-1 gold"></i><span>Dureza: 9 (Mohs)</span></div></div>
+                <div class="card-dark p-4"><img src="https://i.imgur.com/DHbl19I.jpeg" alt="Aguamarina" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10"><h3 class="text-xl font-serif gold font-medium mb-2">Aguamarina</h3><p class="text-gray-300 text-sm mb-2">Variedad azul-verdosa del berilo, muy valorada en joyería por su transparencia.</p><div class="flex items-center text-sm text-gray-400"><i class="fas fa-gem mr-1 gold"></i><span>Dureza: 7.5-8 (Mohs)</span></div></div>
+                <div class="card-dark p-4"><img src="https://i.imgur.com/E3BdgjT.jpeg" alt="Tanzanita" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10"><h3 class="text-xl font-serif gold font-medium mb-2">Tanzanita</h3><p class="text-gray-300 text-sm mb-2">Variedad azul-violeta de zoisita, encontrada solo en Tanzania.</p><div class="flex items-center text-sm text-gray-400"><i class="fas fa-gem mr-1 gold"></i><span>Dureza: 6.5-7 (Mohs)</span></div></div>
+                <div class="card-dark p-4"><img src="https://i.imgur.com/9awjPud.jpeg" alt="Topacio" class="w-full h-48 object-cover rounded-lg mb-3 border border-gold-border/10"><h3 class="text-xl font-serif gold font-medium mb-2">Topacio</h3><p class="text-gray-300 text-sm mb-2">Gema silicato de aluminio y flúor, disponible en varios colores.</p><div class="flex items-center text-sm text-gray-400"><i class="fas fa-gem mr-1 gold"></i><span>Dureza: 8 (Mohs)</span></div></div>
             </div>
         </div>
 
         <!-- Interesting Facts Section -->
-        <div class="card-dark p-4 sm:p-6 rounded-lg mb-8">
+        <div class="card-dark p-4 sm:p-6 rounded-lg mb-8 shimmer-effect">
             <h2 class="text-2xl sm:text-3xl font-serif gold font-semibold mb-6 text-center gold-text-shadow">Sobre las esmeraldas</h2>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- History -->
                 <div class="mb-6">
                     <h3 class="text-xl font-serif gold font-medium mb-3 border-b border-gold-border pb-2">Historia fascinante de las esmeraldas</h3>
                     <div class="space-y-3 text-gray-300 text-base">
                         <p>Las esmeraldas han sido apreciadas desde la antigüedad, con registros de su uso que datan del 3500 a.C. en Egipto. Cleopatra era conocida por su pasión por estas gemas, y los incas las consideraban piedras sagradas.</p>
-                        
-                        <p>En la antigua Roma, el emperador Nerón usaba un lente tallado en esmeralda para ver los combates de gladiadores, creyendo que el color verde calmaba sus ojos.</p>
-                        
-                        <p>Los conquistadores españoles encontraron esmeraldas colombianas en el siglo XVI, que rápidamente se convirtieron en las más valoradas de Europa. Muchas de las esmeraldas que adornan las joyas de la corona europea provienen de Colombia.</p>
-                        
-                        <p>El nombre "esmeralda" proviene del griego antiguo "smaragdos", que significa "piedra verde". En la Edad Media, se creía que la esmeralda podía curar enfermedades como el cólera y la malaria, y que protegía contra los hechizos.</p>
-                        
-                        <p>La esmeralda más grande del mundo, la "Esmeralda de Fura", fue encontrada en Colombia en 1999, pesando 2.2 kg (11,000 quilates). Su hermana, la "Esmeralda de Tena", pesa 2,000 quilates.</p>
-                        
-                        <p>En la cultura islámica, el verde es el color sagrado del Islam, y las esmeraldas eran consideradas símbolos de poder y protección. Muchos manuscritos antiguos mencionan esmeraldas como regalos entre monarcas.</p>
-                        
+                        <p>En la antigua Roma, el emperador Nerón usaba un lente tallado en esmeralda para ver los combates de gladiadores.</p>
+                        <p>Los conquistadores españoles encontraron esmeraldas colombianas en el siglo XVI, que rápidamente se convirtieron en las más valoradas de Europa.</p>
+                        <p>El nombre "esmeralda" proviene del griego antiguo "smaragdos", que significa "piedra verde".</p>
+                        <p>La esmeralda más grande del mundo, la "Esmeralda de Fura", fue encontrada en Colombia en 1999, pesando 2.2 kg (11,000 quilates).</p>
                         <img src="https://i.imgur.com/Pjpx4Kq.jpeg/500x300?text=Historia+de+las+Esmeraldas" alt="Historia de las esmeraldas" class="rounded-lg shadow-lg border border-gold-border/20 mt-4 w-full">
                     </div>
                 </div>
 
-                <!-- Cutting Styles -->
                 <div class="mb-6">
                     <h3 class="text-xl font-serif gold font-medium mb-3 border-b border-gold-border pb-2">Estilos de tallado</h3>
                     <div class="space-y-3">
-                        <div class="flex items-start">
-                            <div class="gold-gradient p-2 rounded-full mr-3">
-                                <i class="fas fa-gem text-black"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-serif gold font-medium">Talla esmeralda</h4>
-                                <p class="text-gray-300 text-sm">Rectangular con facetas escalonadas, realza el color y protege las esquinas.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="gold-gradient p-2 rounded-full mr-3">
-                                <i class="fas fa-gem text-black"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-serif gold font-medium">Tallas redondas y ovaladas</h4>
-                                <p class="text-gray-300 text-sm">Maximizan el peso en quilates y son populares en anillos.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="gold-gradient p-2 rounded-full mr-3">
-                                <i class="fas fa-gem text-black"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-serif gold font-medium">Tallas cabujón</h4>
-                                <p class="text-gray-300 text-sm">Superficie curva sin facetas, usada para esmeraldas con muchas inclusiones.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="gold-gradient p-2 rounded-full mr-3">
-                                <i class="fas fa-gem text-black"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-serif gold font-medium">Tallas fantasía</h4>
-                                <p class="text-gray-300 text-sm">Como pera, corazón o marquise, para diseños únicos.</p>
-                            </div>
-                        </div>
+                        <div class="flex items-start"><div class="bg-emerald-600 p-2 rounded-full mr-3"><i class="fas fa-gem text-white"></i></div><div><h4 class="font-serif gold font-medium">Talla esmeralda</h4><p class="text-gray-300 text-sm">Rectangular con facetas escalonadas, realza el color y protege las esquinas.</p></div></div>
+                        <div class="flex items-start"><div class="bg-emerald-600 p-2 rounded-full mr-3"><i class="fas fa-gem text-white"></i></div><div><h4 class="font-serif gold font-medium">Tallas redondas y ovaladas</h4><p class="text-gray-300 text-sm">Maximizan el peso en quilates y son populares en anillos.</p></div></div>
+                        <div class="flex items-start"><div class="bg-emerald-600 p-2 rounded-full mr-3"><i class="fas fa-gem text-white"></i></div><div><h4 class="font-serif gold font-medium">Tallas cabujón</h4><p class="text-gray-300 text-sm">Superficie curva sin facetas, usada para esmeraldas con muchas inclusiones.</p></div></div>
+                        <div class="flex items-start"><div class="bg-emerald-600 p-2 rounded-full mr-3"><i class="fas fa-gem text-white"></i></div><div><h4 class="font-serif gold font-medium">Tallas fantasía</h4><p class="text-gray-300 text-sm">Como pera, corazón o marquise, para diseños únicos.</p></div></div>
                     </div>
                     <img src="https://i.imgur.com/VohlK8b.jpeg/500x200?text=Tipos+de+Tallado" alt="Tipos de tallado" class="rounded-lg shadow-lg border border-gold-border/20 mt-4 w-full">
                 </div>
 
-                <!-- Colombian vs Other Emeralds -->
                 <div class="mb-6">
                     <h3 class="text-xl font-serif gold font-medium mb-3 border-b border-gold-border pb-2">Esmeraldas colombianas vs. otras</h3>
                     <div class="overflow-x-auto text-base">
-                        <table class="table-dark">
-                            <thead>
-                                <tr>
-                                    <th class="py-2 px-4 text-left">Característica</th>
-                                    <th class="py-2 px-4 text-left">Colombia</th>
-                                    <th class="py-2 px-4 text-left">Brasil</th>
-                                    <th class="py-2 px-4 text-left">Zambia</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="py-2 px-4">Color</td>
-                                    <td class="py-2 px-4">Verde intenso con tonos azules</td>
-                                    <td class="py-2 px-4">Verde más claro, amarillento</td>
-                                    <td class="py-2 px-4">Verde azulado oscuro</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2 px-4">Claridad</td>
-                                    <td class="py-2 px-4">Inclusiones visibles (jardín)</td>
-                                    <td class="py-2 px-4">Más limpias</td>
-                                    <td class="py-2 px-4">Menos inclusiones</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2 px-4">Tamaño</td>
-                                    <td class="py-2 px-4">Piedras grandes disponibles</td>
-                                    <td class="py-2 px-4">Generalmente más pequeñas</td>
-                                    <td class="py-2 px-4">Piedras medianas a grandes</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2 px-4">Valor</td>
-                                    <td class="py-2 px-4">Las más valiosas</td>
-                                    <td class="py-2 px-4">Más accesibles</td>
-                                    <td class="py-2 px-4">Intermedio</td>
-                                </tr>
+                        <table class="min-w-full rounded-lg overflow-hidden border border-gold-border/20">
+                            <thead class="bg-emerald-600"><tr><th class="py-2 px-4 text-left text-white">Característica</th><th class="py-2 px-4 text-left text-white">Colombia</th><th class="py-2 px-4 text-left text-white">Brasil</th><th class="py-2 px-4 text-left text-white">Zambia</th></tr></thead>
+                            <tbody class="divide-y divide-gold-border/10">
+                                <tr><td class="py-2 px-4 text-gray-300">Color</td><td class="py-2 px-4 text-gray-300">Verde intenso con tonos azules</td><td class="py-2 px-4 text-gray-300">Verde más claro, amarillento</td><td class="py-2 px-4 text-gray-300">Verde azulado oscuro</td></tr>
+                                <tr class="bg-black/20"><td class="py-2 px-4 text-gray-300">Claridad</td><td class="py-2 px-4 text-gray-300">Inclusiones visibles (jardín)</td><td class="py-2 px-4 text-gray-300">Más limpias</td><td class="py-2 px-4 text-gray-300">Menos inclusiones</td></tr>
+                                <tr><td class="py-2 px-4 text-gray-300">Tamaño</td><td class="py-2 px-4 text-gray-300">Piedras grandes disponibles</td><td class="py-2 px-4 text-gray-300">Generalmente más pequeñas</td><td class="py-2 px-4 text-gray-300">Piedras medianas a grandes</td></tr>
+                                <tr class="bg-black/20"><td class="py-2 px-4 text-gray-300">Valor</td><td class="py-2 px-4 text-gray-300">Las más valiosas</td><td class="py-2 px-4 text-gray-300">Más accesibles</td><td class="py-2 px-4 text-gray-300">Intermedio</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Chemical Composition -->
                 <div class="mb-6">
                     <h3 class="text-xl font-serif gold font-medium mb-3 border-b border-gold-border pb-2">Composición química y propiedades</h3>
                     <div class="space-y-3 text-gray-300 text-base">
                         <p>Las esmeraldas son una variedad del mineral berilo (Be₃Al₂Si₆O₁₈) coloreado por trazas de cromo y a veces vanadio.</p>
-                        <div class="card-dark p-4">
-                            <h4 class="font-serif gold font-medium mb-2">Propiedades físicas:</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-300">
-                                <li>Dureza: 7.5-8 en la escala de Mohs</li>
-                                <li>Densidad: 2.67-2.78 g/cm³</li>
-                                <li>Índice de refracción: 1.577-1.583</li>
-                                <li>Birrefringencia: 0.005-0.009</li>
-                            </ul>
-                        </div>
+                        <div class="card-dark p-4"><h4 class="font-serif gold font-medium mb-2">Propiedades físicas:</h4><ul class="list-disc pl-5 space-y-1 text-gray-300"><li>Dureza: 7.5-8 en la escala de Mohs</li><li>Densidad: 2.67-2.78 g/cm³</li><li>Índice de refracción: 1.577-1.583</li><li>Birrefringencia: 0.005-0.009</li></ul></div>
                         <p>El color verde se debe a la presencia de cromo (Cr³⁺) que absorbe las longitudes de onda amarillas y rojas de la luz.</p>
                         <p>Las esmeraldas colombianas suelen tener mayor contenido de cromo que de vanadio, lo que contribuye a su color único.</p>
                     </div>
@@ -1041,20 +1030,14 @@
         </div>
 
         <!-- Privacy Policy -->
-        <div class="card-dark p-6 rounded-lg mb-8">
+        <div class="card-dark p-6 rounded-lg mb-8 shimmer-effect">
             <h2 class="text-3xl font-serif gold font-semibold mb-6 text-center gold-text-shadow">Políticas de Privacidad</h2>
-
             <div class="prose max-w-none text-gray-300">
                 <p>Respetamos su privacidad y protegemos sus datos personales. Solo recopilamos información necesaria para brindar nuestros servicios y mejorar su experiencia.</p>
-
                 <p class="mt-4">Utilizamos medidas de seguridad para proteger sus datos y nunca compartiremos su información con terceros sin su consentimiento.</p>
-
                 <p class="mt-4">Puede contactarnos en cualquier momento para ejercer sus derechos sobre sus datos personales.</p>
-
-                <p class="mt-4">Laboratorio Gemológico Local Especializado en Esmeraldas Colombianas, donde realizamos análisis internos para verificar características físicas, ópticas y gemológicas de las piezas ofrecidas. Este laboratorio no recopila datos personales ni manipula información del usuario.</p>
-
+                <p class="mt-4">Laboratorio Gemológico Local Especializado en Esmeraldas Colombianas, donde realizamos análisis internos para verificar características físicas, ópticas y gemológicas de las piezas ofrecidas.</p>
                 <p class="mt-4">La información registrada en nuestros informes o certificados gemológicos corresponde exclusivamente al producto, e incluye datos como peso, color, forma, brillo, claridad, origen estimado, tratamientos, medidas y observaciones técnicas.</p>
-
                 <p class="mt-6 gold">Última actualización: 15 de junio, 2025</p>
             </div>
         </div>
@@ -1064,94 +1047,46 @@
     <footer class="footer-dark py-8 text-white">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-serif gold font-bold mb-4">Joyeria de Esmeraldas</h3>
-                    <p class="mb-4 text-gray-300">Expertos en esmeraldas colombianas de la más alta calidad con certificación gemológica.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-serif gold font-bold mb-4">Contacto</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center"><i class="fas fa-map-marker-alt gold mr-2"></i>Bogotá, Medellin</li>
-                        <li class="flex items-center"><i class="fas fa-phone-alt gold mr-2"></i> +57 3184848399</li>
-                        <li class="flex items-center"><i class="fas fa-envelope gold mr-2"></i> esmeraldartee@gmail.com</li>
-                        <li class="flex items-center"><i class="fas fa-clock gold mr-2"></i> Lunes a Viernes: 9am - 6pm</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-serif gold font-bold mb-4">Enlaces rápidos</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="#" class="hover:text-gold transition">Inicio</a></li>
-                        <li><a href="#" class="hover:text-gold transition">Certificación</a></li>
-                        <li><a href="#" class="hover:text-gold transition">Cuidados</a></li>
-                        <li><a href="#" class="hover:text-gold transition">Gemología</a></li>
-                        <li><a href="#" class="hover:text-gold transition">Herramientas</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-serif gold font-bold mb-4">Boletín informativo</h3>
-                    <p class="mb-4 text-gray-300">Suscríbete para recibir noticias y promociones especiales.</p>
-                    <div class="flex">
-                        <input type="email" placeholder="Tu correo electrónico" class="px-3 py-2 bg-black/40 border border-gold-border/20 text-gray-200 rounded-l w-full focus:border-gold focus:outline-none">
-                        <button class="gold-gradient text-black px-4 py-2 rounded-r hover:opacity-80 transition">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
+                <div><h3 class="text-xl font-serif gold font-bold mb-4">Joyeria de Esmeraldas</h3><p class="mb-4 text-gray-300">Expertos en esmeraldas colombianas de la más alta calidad con certificación gemológica.</p><div class="flex space-x-4"><a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-facebook-f"></i></a><a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-instagram"></i></a><a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-tiktok"></i></a><a href="#" class="text-gray-400 hover:text-gold transition"><i class="fab fa-youtube"></i></a></div></div>
+                <div><h3 class="text-xl font-serif gold font-bold mb-4">Contacto</h3><ul class="space-y-2 text-gray-300"><li class="flex items-center"><i class="fas fa-map-marker-alt gold mr-2"></i>Bogotá, Medellin</li><li class="flex items-center"><i class="fas fa-phone-alt gold mr-2"></i> +57 3184848399</li><li class="flex items-center"><i class="fas fa-envelope gold mr-2"></i> esmeraldartee@gmail.com</li><li class="flex items-center"><i class="fas fa-clock gold mr-2"></i> Lunes a Viernes: 9am - 6pm</li></ul></div>
+                <div><h3 class="text-xl font-serif gold font-bold mb-4">Enlaces rápidos</h3><ul class="space-y-2 text-gray-300"><li><a href="#" class="hover:text-gold transition">Inicio</a></li><li><a href="#" class="hover:text-gold transition">Certificación</a></li><li><a href="#" class="hover:text-gold transition">Cuidados</a></li><li><a href="#" class="hover:text-gold transition">Gemología</a></li><li><a href="#" class="hover:text-gold transition">Herramientas</a></li></ul></div>
+                <div><h3 class="text-xl font-serif gold font-bold mb-4">Boletín informativo</h3><p class="mb-4 text-gray-300">Suscríbete para recibir noticias y promociones especiales.</p><div class="flex"><input type="email" placeholder="Tu correo electrónico" class="px-3 py-2 bg-black/40 border border-gold-border/20 text-gray-200 rounded-l w-full focus:border-gold focus:outline-none"><button class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-r transition"><i class="fas fa-paper-plane"></i></button></div></div>
             </div>
-            <div class="border-t border-gold-border/20 mt-8 pt-6 text-center text-gray-400 text-sm">
-                <p>&copy; 2023 Joyeria de Esmeraldas. Todos los derechos reservados.</p>
-            </div>
+            <div class="border-t border-gold-border/20 mt-8 pt-6 text-center text-gray-400 text-sm"><p>&copy; 2023 Joyeria de Esmeraldas. Todos los derechos reservados.</p></div>
         </div>
     </footer>
-        <!-- Certificate Modal -->
+
+    <!-- Certificate Modal -->
     <div id="certificateModal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden backdrop-blur-sm">
         <div class="card-dark rounded-lg max-w-4xl w-full mx-4 max-h-screen overflow-y-auto p-6">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-serif gold font-bold">Certificado de Autenticidad</h2>
-                <button onclick="closeCertificateModal()" class="text-gray-400 hover:text-gold transition text-2xl">
-                    <i class="fas fa-times"></i>
-                </button>
+                <button onclick="closeCertificateModal()" class="text-gray-400 hover:text-gold transition text-2xl"><i class="fas fa-times"></i></button>
             </div>
-
             <div class="certificate-container grid md:grid-cols-2 gap-6 mb-6">
-                <!-- Certificate Front -->
                 <div class="certificate-image relative">
                     <div id="certificateCode" class="certificate-code">Código: 7788</div>
                     <img id="certificateFront" src="https://via.placeholder.com/600x800/1a2a1a/d4af37?text=Frente+Certificado+7788" alt="Frente del Certificado" class="w-full rounded-lg shadow-lg border border-gold-border/20">
                 </div>
-                <!-- Certificate Back -->
                 <div class="certificate-image relative">
                     <div id="certificateCodeBack" class="certificate-code">Código: 7788</div>
                     <img id="certificateBack" src="https://via.placeholder.com/600x800/1a2a1a/d4af37?text=Reverso+Certificado+7788" alt="Reverso del Certificado" class="w-full rounded-lg shadow-lg border border-gold-border/20">
                 </div>
             </div>
-
             <div class="card-dark p-4 rounded-lg mb-6 border border-gold-border/20">
                 <div class="flex items-center mb-3">
-                    <div class="gold-gradient text-black rounded-full p-2 mr-3">
-                        <i class="fas fa-check"></i>
-                    </div>
+                    <div class="bg-emerald-600 text-white rounded-full p-2 mr-3"><i class="fas fa-check"></i></div>
                     <h3 class="text-xl font-serif gold font-semibold">Indicador de Autenticidad</h3>
                 </div>
                 <p class="text-gray-300">Este certificado ha sido verificado como auténtico y corresponde a una piedra preciosa natural certificada por nuestro laboratorio gemológico.</p>
             </div>
-
             <div class="mb-6">
                 <h3 class="text-xl font-serif gold font-medium mb-3">Análisis Gemológico</h3>
-                <div class="grid md:grid-cols-2 gap-4" id="certificateDetails">
-                    <!-- Details will be populated by JavaScript -->
-                </div>
+                <div class="grid md:grid-cols-2 gap-4" id="certificateDetails"></div>
             </div>
-
             <div class="card-dark p-4 border border-gold-border/20">
                 <h4 class="font-serif gold font-medium mb-2">Proceso de certificación</h4>
-                <p class="text-gray-300 text-sm mb-3">Cada Piedra es analizada por nuestro equipo de gemólogos certificados utilizando tecnología de punta para garantizar su autenticidad y calidad. El proceso incluye:</p>
+                <p class="text-gray-300 text-sm mb-3">Cada Piedra es analizada por nuestro equipo de gemólogos certificados utilizando tecnología de punta para garantizar su autenticidad y calidad.</p>
                 <ul class="list-disc pl-5 text-gray-300 text-sm space-y-1">
                     <li>Examen microscópico para identificar inclusiones naturales</li>
                     <li>Espectroscopía para determinar elementos cromóforos</li>
@@ -1166,31 +1101,28 @@
 
     <script>
         // ============================================================
-        // TODAS LAS FUNCIONES ORIGINALES SE MANTIENEN COMPLETAS
+        // TODAS LAS FUNCIONES ORIGINALES - COMPLETAS
         // ============================================================
 
         // Certificate Search Function
         function searchCertificate() {
             const code = document.getElementById('certificateSearch').value.trim();
             if (code === '200329' || code === '200961' || code === '200960' || code === '200959' || code === '200958' || code === '200957' || code === '200956' || code === '200955' || code === '200954' || code === '200953' || code === '200952' || code === '200951' || code === '200950' || code === '200949' || code === '200948' || code === '200947' || code === '200946' || code === '200945' || code === '200944' || code === '200943' || code === '200942' || code === '200941' || code === '200940' || code === '200939' || code === '200938' || code === '200937' || code === '200936' || code === '200935' || code === '200934' || code === '200933' || code === '201046' || code === '95565' || code === '95564' || code === '95563' || code === '95562' || code === '201010' || code === '00226' || code === '00225' || code === '200962' || code === '200953' || code === '00224' || code === '00223' || code === '00222' || code === '00221' || code === '00220' || code === '00219' || code === '00218' || code === '00217' || code === '00216' || code === '00215' || code === '00214' || code === '20942' || code === '20941' || code === '20940' || code === '20939' || code === '20938' || code === '20937' || code === '20936' || code === '20935' || code === '20934' || code === '20933' || code === '200931' || code === '200930' || code === '200929' || code === '200928' || code === '200927' || code === '200926' || code === '200925' || code === '200924' || code === '200923' || code === '200922' || code === '200921' || code === '200920' || code === '200919' || code === '200918' || code === '200917' || code === '200916' || code === '200915' || code === '200914' || code === '200913' || code === '200912' || code === '200911' || code === '200910' || code === '200909' || code === '200907' || code === '200906' || code === '200905' || code === '200904' || code === '200903' || code === '200902' || code === '200901' || code === '200900' || code === '200899' || code === '200898' || code === '200897' || code === '200896' || code === '200895' || code === '200894' || code === '200893' || code === '200892' || code === '200891' || code === '200890' || code === '200889' || code === '200888' || code === '200887' || code === '200886' || code === '200885' || code === '200884' || code === '200883' || code === '200882' || code === '200881' || code === '200880' || code === '200879' || code === '200878' || code === '200877' || code === '200876' || code === '200875' || code === '200874' || code === '200873' || code === '200872' || code === '200871' || code === '200870' || code === '200869' || code === '200868' || code === '200867' || code === '200866' || code === '200865' || code === '200864' || code === '200863' || code === '200862' || code === '200861' || code === '200860' || code === '200859' || code === '200858' || code === '200857' || code === '200856' || code === '200855' || code === '200854' || code === '200853' || code === '200852' || code === '200851' || code === '200850' || code === '200849' || code === '200848' || code === '200847' || code === '200846' || code === '200845' || code === '200844' || code === '200843' || code === '200842' || code === '200841' || code === '200840' || code === '2545' || code === '2544' || code === '2543' || code === '2542' || code === '20932' || code === '200932' || code === '200839' || code === '200838' || code === '200837' || code === '200836' || code === '200835' || code === '200834' || code === '200833' || code === '200832' || code === '200831' || code === '200830' || code === '200829' || code === '200828' || code === '200827' || code === '200826' || code === '200825' || code === '200824' || code === '200823' || code === '200822' || code === '200821' || code === '200820' || code === '200819' || code === '200818' || code === '200817' || code === '200816' || code === '200815' || code === '200814' || code === '200813' || code === '200812' || code === '200811' || code === '200810' || code === '200809' || code === '200808' || code === '200807' || code === '200806' || code === '200805' || code === '200804' || code === '200803' || code === '200802' || code === '200801' || code === '200908' || code === '200800' || code === '200799' || code === '200798' || code === '200797' || code === '200796' || code === '200795' || code === '200794' || code === '200793' || code === '200792' || code === '200791' || code === '200790' || code === '200789' || code === '200788' || code === '200787' || code === '200786' || code === '200785' || code === '200784' || code === '200783' || code === '200782' || code === '200781' || code === '200780' || code === '200779' || code === '200778' || code === '200777' || code === '200776' || code === '200775' || code === '200774' || code === '200773' || code === '200772' || code === '200771' || code === '200770' || code === '200841' || code === '200840' || code === '200844' || code === '200843' || code === '200842' || code === '00213' || code === '100056' || code === '12009' || code === '12008' || code === '12007' || code === '12006' || code === '12005' || code === '12004' || code === '12003' || code === '12002' || code === '12001' || code === '12010' || code === '200722' || code === '02300' || code === '200758' || code === '200757' || code === '200756' || code === '200755' || code === '200754' || code === '200753' || code === '200752' || code === '200751' || code === '200750' || code === '200749' || code === '200748' || code === '200747' || code === '200746' || code === '200745' || code === '200744' || code === '200743' || code === '200742' || code === '200741' || code === '200740' || code === '200739' || code === '200738' || code === '200737' || code === '200736' || code === '200735' || code === '200734' || code === '200733' || code === '200732' || code === '200731' || code === '200730' || code === '200729' || code === '200728' || code === '200727' || code === '200726' || code === '200725' || code === '200724' || code === '200762' || code === '200723' || code === '200721' || code === '200720' || code === '200719' || code === '200718' || code === '200717' || code === '200716' || code === '200715' || code === '200714' || code === '200713' || code === '200712' || code === '200711' || code === '200710' || code === '200709' || code === '200708' || code === '200707' || code === '200705' || code === '200704' || code === '200703' || code === '200702' || code === '200701' || code === '200700' || code === '200698' || code === '200699' || code === '200696' || code === '200697' || code === '200694' || code === '200695' || code === '200692' || code === '200693' || code === '200691' || code === '200690' || code === '200687' || code === '200688' || code === '200684' || code === '200685' || code === '200686' || code === '200681' || code === '200682' || code === '200683' || code === '200680' || code === '200679' || code === '200678' || code === '200677' || code === '200676' || code === '200675' || code === '200673' || code === '200674' || code === '200672' || code === '200671' || code === '200670' || code === '200667' || code === '200668' || code === '200669' || code === '200769' || code === '200768' || code === '200767' || code === '200766' || code === '200765' || code === '200763' || code === '200764' || code === '200689' || code === '120426' || code === '120427' || code === '200706' || code === '182564' || code === '200664' || code === '200665' || code === '200666' || code === '200660' || code === '200661' || code === '200657' || code === '200658' || code === '200659' || code === '200655' || code === '200656' || code === '200653' || code === '200654' || code === '200651' || code === '200652' || code === '200647' || code === '200650' || code === '200649' || code === '200648' || code === '200645' || code === '200646' || code === '200643' || code === '200644' || code === '200642' || code === '200640' || code === '200641' || code === '200638' || code === '200637' || code === '200634' || code === '200635' || code === '200633' || code === '200632' || code === '200631' || code === '200630' || code === '200629' || code === '200628' || code === '200627' || code === '200626' || code === '200625' || code === '200662' || code === '200624' || code === '200623' || code === '200639' || code === '200622' || code === '200621' || code === '200620' || code === '200619' || code === '200636' || code === '200663' || code === '1091' || code === '200618' || code === '200617' || code === '200616' || code === '200615' || code === '200614' || code === '200613' || code === '200612' || code === '200611' || code === '200610' || code === '200609' || code === '200608' || code === '200607' || code === '200606' || code === '200605' || code === '200604' || code === '200603' || code === '200602' || code === '200601' || code === '200600' || code === '200599' || code === '200598' || code === '200597' || code === '200596' || code === '200595' || code === '200594' || code === '200593' || code === '200592' || code === '200591' || code === '200590' || code === '200588' || code === '200587' || code === '200586' || code === '200585' || code === '200584' || code === '200583' || code === '200582' || code === '200581' || code === '200580' || code === '200579' || code === '200578' || code === '200577' || code === '200576' || code === '200575' || code === '200574' || code === '200572' || code === '200571' || code === '200570' || code === '200573' || code === '200589' || code === '200559' || code === '200558' || code === '200557' || code === '200556' || code === '200555' || code === '200554' || code === '200553' || code === '200552' || code === '200550' || code === '200549' || code === '200547' || code === '200548' || code === '200546' || code === '200545' || code === '200544' || code === '200543' || code === '200542' || code === '200551' || code === '200540' || code === '200539' || code === '200538' || code === '200537' || code === '200536' || code === '200535' || code === '200534' || code === '200533' || code === '200532' || code === '200531' || code === '200530' || code === '200528' || code === '200529' || code === '200541' || code === '200527' || code === '200526' || code === '200525' || code === '200524' || code === '200523' || code === '200522' || code === '200521' || code === '200520' || code === '200519' || code === '200518' || code === '200517' || code === '200516' || code === '200515' || code === '200514' || code === '200513' || code === '200512' || code === '200511' || code === '200510' || code === '200509' || code === '200508' || code === '200507' || code === '200506' || code === '200505' || code === '200504' || code === '200503' || code === '200502' || code === '200501' || code === '200500' || code === '200499' || code === '200498' || code === '200497' || code === '200496' || code === '200495' || code === '200494' || code === '200493' || code === '200492' || code === '200491' || code === '200490' || code === '200489' || code === '200488' || code === '200487' || code === '200486' || code === '200485' || code === '200484' || code === '200483' || code === '200482' || code === '200481' || code === '200480' || code === '200479' || code === '200478' || code === '200477' || code === '200476' || code === '200475' || code === '200474' || code === '200473' || code === '200472' || code === '200471' || code === '200470' || code === '200469' || code === '200468' || code === '200467' || code === '200466' || code === '200465' || code === '200464' || code === '200463' || code === '200462' || code === '200461' || code === '200460' || code === '200459' || code === '200458' || code === '200457' || code === '200456' || code === '200455' || code === '200454' || code === '200453' || code === '200452' || code === '200451' || code === '200450' || code === '200449' || code === '200448' || code === '200447' || code === '200446' || code === '200445' || code === '200444' || code === '200443' || code === '200442' || code === '200441' || code === '200440' || code === '200439' || code === '200438' || code === '200437' || code === '200436' || code === '200435' || code === '200434' || code === '200433' || code === '200432' || code === '200431' || code === '200430' || code === '200429' || code === '200428' || code === '200427' || code === '200426' || code === '200425' || code === '200424' || code === '200423' || code === '200422' || code === '200421' || code === '200420' || code === '200419' || code === '200418' || code === '200417' || code === '200416' || code === '200415' || code === '200414' || code === '200413' || code === '200412' || code === '200411' || code === '200410' || code === '200409' || code === '200408' || code === '200407' || code === '200406' || code === '200405' || code === '200404' || code === '200403' || code === '200402' || code === '200401' || code === '200400' || code === '200399' || code === '200398' || code === '200397' || code === '200396' || code === '200395' || code === '200394' || code === '200393' || code === '200392' || code === '200391' || code === '200390' || code === '200389' || code === '200388' || code === '200387' || code === '200386' || code === '200385' || code === '200384' || code === '200383' || code === '200382' || code === '200381' || code === '200380' || code === '200379' || code === '200378' || code === '200377' || code === '200376' || code === '200375' || code === '200374' || code === '200373' || code === '200372' || code === '200371' || code === '200370' || code === '200369' || code === '200368' || code === '200367' || code === '200366' || code === '200365' || code === '200364' || code === '200363' || code === '200362' || code === '200361' || code === '200360' || code === '200359' || code === '200358' || code === '200357' || code === '200356' || code === '200355' || code === '200354' || code === '200353' || code === '200352' || code === '200351' || code === '200350' || code === '200349' || code === '200348' || code === '200347' || code === '200346' || code === '200345' || code === '200344' || code === '200343' || code === '200342' || code === '200341' || code === '200340' || code === '200339' || code === '200338' || code === '200337' || code === '200336' || code === '200335' || code === '200334' || code === '200333' || code === '200332' || code === '200331' || code === '200330' || code === '200326' || code === '200325' || code === '200324' || code === '200323' || code === '200322' || code === '200321' || code === '200320' || code === '200319' || code === '200318' || code === '200317' || code === '200316' || code === '200315' || code === '200314' || code === '200313' || code === '200312' || code === '200311' || code === '200310' || code === '200309' || code === '200308' || code === '200307' || code === '200306' || code === '200305' || code === '200304' || code === '200303' || code === '200302' || code === '200301' || code === '200300' || code === '200299' || code === '200298' || code === '200296' || code === '200297' || code === '200295' || code === '200294' || code === '200293' || code === '200292' || code === '200290' || code === '200291' || code === '200289' || code === '200287' || code === '200288' || code === '200286' || code === '200327' || code === '200328' || code === '200285' || code === '200284' || code === '200283' || code === '200282' || code === '200281' || code === '200279' || code === '200280' || code === '200276' || code === '200277' || code === '200278' || code === '200274' || code === '200275' || code === '200272' || code === '200273' || code === '200271' || code === '200270' || code === '200269' || code === '200267' || code === '200268' || code === '200265' || code === '200266' || code === '200264' || code === '200255' || code === '200256' || code === '200253' || code === '200254' || code === '200251' || code === '200252' || code === '200249' || code === '200250' || code === '200247' || code === '200248' || code === '200246' || code === '200245' || code === '200244' || code === '200243' || code === '200242' || code === '200241' || code === '200240' || code === '200239' || code === '200238' || code === '200237' || code === '200236' || code === '200235' || code === '200234' || code === '200233' || code === '200232' || code === '200230' || code === '200231' || code === '200228' || code === '200229' || code === '200226' || code === '200227' || code === '200225' || code === '200223' || code === '200224' || code === '200221' || code === '200222' || code === '200219' || code === '200220' || code === '200215' || code === '200217' || code === '200218' || code === '200216' || code === '200213' || code === '200214' || code === '200212' || code === '200258' || code === '200257' || code === '200262' || code === '200259' || code === '200261' || code === '200260' || code === '200170' || code === '200263' || code === '200167' || code === '200168' || code === '200169' || code === '200164' || code === '200165' || code === '200166' || code === '200162' || code === '200163' || code === '200161' || code === '200157' || code === '200158' || code === '200159' || code === '200160' || code === '200154' || code === '200155' || code === '200156' || code === '200151' || code === '200152' || code === '200153' || code === '200149' || code === '200150' || code === '200146' || code === '200147' || code === '200148' || code === '200145' || code === '200142' || code === '200144' || code === '200143' || code === '200135' || code === '200139' || code === '200141' || code === '200140' || code === '200136' || code === '200137' || code === '200138' || code === '200209' || code === '200210' || code === '200132' || code === '200134' || code === '200133' || code === '200131' || code === '200211' || code === '200205' || code === '200206' || code === '200207' || code === '200208' || code === '200201' || code === '200202' || code === '200203' || code === '200204' || code === '200197' || code === '200198' || code === '200199' || code === '200200' || code === '200192' || code === '200193' || code === '200194' || code === '200195' || code === '200196' || code === '200187' || code === '200191' || code === '200188' || code === '200189' || code === '200190' || code === '200181' || code === '200185' || code === '200186' || code === '200182' || code === '200183' || code === '200184' || code === '200175' || code === '200179' || code === '200180' || code === '200176' || code === '200177' || code === '200178' || code === '200101' || code === '200172' || code === '200173' || code === '200174' || code === '200128' || code === '200130' || code === '200129' || code === '200124' || code === '200126' || code === '200127' || code === '200125' || code === '200121' || code === '200122' || code === '200123' || code === '200115' || code === '200119' || code === '200120' || code === '200116' || code === '200117' || code === '200106' || code === '200109' || code === '200112' || code === '200113' || code === '200114' || code === '200110' || code === '200107' || code === '200108' || code === '200103' || code === '200105' || code === '200102' || code === '200104' || code === '200171' || code === '200111' || code === '200118' || code === '100568' || code === '200567' || code === '2026' || code === '2027') {
-                // Show the modal with appropriate certificate
                 document.getElementById('certificateModal').classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
-
-                // Update images and details based on specific code
                 switch(code) {
                     case '200329':
                         document.getElementById('certificateFront').src = 'https://i.imgur.com/iFiLe8E.png';
                         document.getElementById('certificateBack').src = 'https://i.imgur.com/H29SSnq.png';
                         document.getElementById('certificateCode').textContent = `Código: ${code}`;
                         document.getElementById('certificateCodeBack').textContent = `Código: ${code}`;
-                        break
+                        break;
                     case '200367':
                         document.getElementById('certificateFront').src = 'https://i.imgur.com/eUnFmbx.png';
                         document.getElementById('certificateBack').src = 'https://i.imgur.com/H29SSnq.png';
                         document.getElementById('certificateCode').textContent = `Código: ${code}`;
                         document.getElementById('certificateCodeBack').textContent = `Código: ${code}`;
-                        break; 
+                        break;
                     case '200108':
                         document.getElementById('certificateFront').src = 'https://i.imgur.com/lmZJ5Vc.png';
                         document.getElementById('certificateBack').src = 'https://i.imgur.com/H29SSnq.png';
@@ -1227,7 +1159,31 @@
                         document.getElementById('certificateCode').textContent = `Código: ${code}`;
                         document.getElementById('certificateCodeBack').textContent = `Código: ${code}`;
                         break;
-                     case '2027':
+                    case '200101':
+                        document.getElementById('certificateFront').src = 'https://i.imgur.com/RwRWo47.png';
+                        document.getElementById('certificateBack').src = 'https://i.imgur.com/H29SSnq.png';
+                        document.getElementById('certificateCode').textContent = `Código: ${code}`;
+                        document.getElementById('certificateCodeBack').textContent = `Código: ${code}`;
+                        break;
+                    case '200102':
+                        document.getElementById('certificateFront').src = 'https://i.imgur.com/qvih7HL.png';
+                        document.getElementById('certificateBack').src = 'https://i.imgur.com/H29SSnq.png';
+                        document.getElementById('certificateCode').textContent = `Código: ${code}`;
+                        document.getElementById('certificateCodeBack').textContent = `Código: ${code}`;
+                        break;
+                    case '200567':
+                        document.getElementById('certificateFront').src = 'https://i.imgur.com/mRW7WlO.png';
+                        document.getElementById('certificateBack').src = 'https://i.imgur.com/H29SSnq.png';
+                        document.getElementById('certificateCode').textContent = `Código: ${code}`;
+                        document.getElementById('certificateCodeBack').textContent = `Código: ${code}`;
+                        break;
+                    case '2026':
+                        document.getElementById('certificateFront').src = 'https://i.imgur.com/ejemplo2026frente.png';
+                        document.getElementById('certificateBack').src = 'https://i.imgur.com/ejemplo2026reverso.png';
+                        document.getElementById('certificateCode').textContent = `Código: ${code}`;
+                        document.getElementById('certificateCodeBack').textContent = `Código: ${code}`;
+                        break;
+                    case '2027':
                         document.getElementById('certificateFront').src = 'https://i.imgur.com/ejemplo2027frente.png';
                         document.getElementById('certificateBack').src = 'https://i.imgur.com/ejemplo2027reverso.png';
                         document.getElementById('certificateCode').textContent = `Código: ${code}`;
@@ -1249,21 +1205,17 @@
 
         function updateCertificateDetails(code) {
             const detailsContainer = document.getElementById('certificateDetails');
-            let details = [];
-
             const allDetails = [
                 { title: 'Validación', value: 'Gema Verificada' },
                 { title: 'Origen', value: 'Certificación Colombiana' },
                 { title: 'Fecha de certificación', value: '15/05/2026' }
             ];
-
-            // Clear and repopulate the container
             detailsContainer.innerHTML = '';
             allDetails.forEach(detail => {
                 detailsContainer.innerHTML += `
-                    <div class="bg-white p-3 rounded-lg border border-gray-200">
-                        <h4 class="font-medium text-emerald-600 mb-1">${detail.title}</h4>
-                        <p class="text-sm text-gray-700">${detail.value}</p>
+                    <div class="card-dark p-3 rounded-lg border border-gold-border/20">
+                        <h4 class="font-serif gold font-medium mb-1">${detail.title}</h4>
+                        <p class="text-sm text-gray-300">${detail.value}</p>
                     </div>
                 `;
             });
@@ -1298,84 +1250,50 @@
             document.getElementById('interactiveTools').classList.add('hidden');
         }
 
-        // Shape Selector for Interactive Tools
+        // Shape Selector
         document.addEventListener('DOMContentLoaded', function() {
-            const shapeSelectors = document.querySelectorAll('.shape-selector');
-
+            const shapeSelectors = document.querySelectorAll('.shape-selector-dark');
             shapeSelectors.forEach(selector => {
                 selector.addEventListener('click', function() {
-                    // Remove active class from all
                     shapeSelectors.forEach(s => s.classList.remove('active'));
-                    // Add to clicked one
                     this.classList.add('active');
-
-                    // Update shape display
                     const shape = this.getAttribute('data-shape');
                     const shapeDisplay = document.getElementById('shapeDisplay');
                     shapeDisplay.querySelector('img').src = `https://via.placeholder.com/300x300?text=${shape.charAt(0).toUpperCase() + shape.slice(1)}+Cut`;
-
-                    // Update the select dropdown
                     document.getElementById('shape').value = shape;
                 });
             });
-
-            // Set first shape as active by default
             if (shapeSelectors.length > 0) {
                 shapeSelectors[0].classList.add('active');
             }
-
-            // Function to update map image with your custom link
-            function updateMapImage(imageUrl) {
-                const mapImage = document.getElementById('mapImage');
-                if (mapImage && imageUrl) {
-                    mapImage.src = imageUrl;
-                }
-            }
-            
-            // Example of how to use it (you can call this function when you have the image URL)
-            // updateMapImage('https://example.com/your-map-image.jpg');
         });
 
-        // Calculate carats based on dimensions and shape
+        // Calculate carats
         function calculateCarats() {
             const length = parseFloat(document.getElementById('length').value) || 0;
             const width = parseFloat(document.getElementById('width').value) || 0;
             const depth = parseFloat(document.getElementById('depth').value) || 0;
             const shape = document.getElementById('shape').value;
-
-            // Calculate average diameter for round shapes
             const avgDiameter = (length + width) / 2;
-
-            // Shape factors adjusted to give slightly lower results (~0.10 ct less)
             const shapeFactors = {
-                'emerald': 0.0061,  // Rectangular/Emerald cut (L×W×H×0.0061)
-                'oval': 0.0062,     // Oval cut (L×W×H×0.0062)
-                'round': 0.0061,    // Round cut (D×D×H×0.0061)
-                'pear': 0.0059,     // Pear shape (L×W×H×0.0059)
-                'cushion': 0.0061,  // Cushion cut (L×W×H×0.0061)
-                'heart': 0.0059     // Heart shape (L×W×H×0.0059)
+                'emerald': 0.0061,
+                'oval': 0.0062,
+                'round': 0.0061,
+                'pear': 0.0059,
+                'cushion': 0.0061,
+                'heart': 0.0059
             };
-
-            // Carat calculation formula with exact factors
             let carats;
             if (shape === 'round') {
-                // For round shapes, use average diameter squared × depth × factor
                 carats = avgDiameter * avgDiameter * depth * shapeFactors[shape];
             } else {
-                // For other shapes, use length × width × depth × factor
                 carats = length * width * depth * shapeFactors[shape];
             }
-
-            // Round to 2 decimal places
             carats = Math.round(carats * 100) / 100;
-
-            // Display the result
             const resultElement = document.getElementById('caratResult');
             document.getElementById('caratValue').textContent = `${carats} ct`;
             document.getElementById('dimensionText').textContent = `Dimensiones: ${length}mm × ${width}mm × ${depth}mm`;
             resultElement.classList.remove('hidden');
-
-            // Also update the shape display dimensions
             updateDimensionDisplay(length, width, depth, carats);
         }
 
