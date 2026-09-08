@@ -167,10 +167,8 @@
             bottom: 0;
             z-index: -1;
             background-image: 
-                /* Patrón de rombos/facetas */
                 linear-gradient(45deg, rgba(18, 40, 18, 0.15) 0%, transparent 30%),
                 linear-gradient(-45deg, rgba(212, 175, 55, 0.02) 0%, transparent 40%),
-                /* Textura de fondo sutil */
                 radial-gradient(circle at 20% 50%, rgba(26, 50, 26, 0.2) 0%, transparent 60%),
                 radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
                 radial-gradient(circle at 50% 80%, rgba(18, 40, 18, 0.15) 0%, transparent 50%);
@@ -178,7 +176,6 @@
             pointer-events: none;
         }
 
-        /* Patrón de facetas geométricas superpuesto */
         body::after {
             content: '';
             position: fixed;
@@ -188,7 +185,6 @@
             bottom: 0;
             z-index: -1;
             background-image: 
-                /* Triángulos que simulan facetas */
                 repeating-linear-gradient(60deg, 
                     transparent 0px, 
                     transparent 120px,
@@ -316,7 +312,6 @@
             position: relative;
             z-index: 10;
         }
-        /* Sutil brillo en el header */
         .dark-luxury-header::after {
             content: '';
             position: absolute;
@@ -418,7 +413,7 @@
             color: #d4af37;
         }
 
-        /* --- TARJETAS CON EFECTO VIDRIO PREMIUM Y TEXTURA --- */
+        /* --- TARJETAS CON EFECTO VIDRIO PREMIUM --- */
         .card-dark {
             background: rgba(18, 28, 18, 0.6);
             backdrop-filter: blur(16px);
@@ -431,7 +426,6 @@
             overflow: hidden;
         }
 
-        /* Textura sutil dentro de las tarjetas */
         .card-dark::before {
             content: '';
             position: absolute;
@@ -452,7 +446,6 @@
             border-radius: 16px;
         }
 
-        /* Efecto de brillo en las tarjetas al pasar el mouse */
         .card-dark::after {
             content: '';
             position: absolute;
@@ -476,32 +469,6 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.05);
         }
 
-        /* --- VARIANTE DE TARJETA CON BORDE DORADO --- */
-        .card-dark-gold {
-            background: rgba(18, 28, 18, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 16px;
-            transition: all 0.5s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            position: relative;
-            overflow: hidden;
-        }
-        .card-dark-gold::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 16px;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), transparent, rgba(212, 175, 55, 0.1));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-        }
-
         .footer-dark {
             background: linear-gradient(180deg, rgba(10, 15, 10, 0.95), rgba(5, 8, 5, 0.98));
             border-top: 1px solid rgba(212, 175, 55, 0.08);
@@ -509,7 +476,6 @@
             position: relative;
         }
 
-        /* Scrollbar personalizada */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -534,7 +500,6 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        /* --- SELECTOR DE FORMAS CON ESTILO --- */
         .shape-selector-dark {
             background: rgba(18, 28, 18, 0.6);
             border: 1px solid rgba(212, 175, 55, 0.12);
@@ -565,7 +530,6 @@
             color: #d4af37;
         }
 
-        /* --- TABLA OSCURA --- */
         .table-dark {
             border-collapse: collapse;
             width: 100%;
@@ -595,9 +559,40 @@
             background: rgba(212, 175, 55, 0.04);
         }
 
-        /* ============================================================
-           MEDIA QUERIES
-           ============================================================ */
+        /* Logo container con dos logos */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+        .logo-container img {
+            height: 100px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo-container img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Separador entre logos */
+        .logo-divider {
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        @media (min-width: 768px) {
+            .logo-container img {
+                height: 120px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .logo-container img {
+                height: 140px;
+            }
+        }
+
         @media (max-width: 640px) {
             .action-buttons {
                 flex-direction: column;
@@ -627,8 +622,11 @@
                 font-size: 12px;
                 display: none;
             }
-            .logo-img {
-                height: 120px !important;
+            .logo-container img {
+                height: 60px !important;
+            }
+            .logo-divider {
+                height: 40px;
             }
             .certificate-container {
                 grid-template-columns: 1fr;
@@ -724,14 +722,19 @@
         <span class="tooltip">Comunícate con nosotros</span>
     </a>
 
-    <!-- HEADER DARK LUXURY -->
+    <!-- HEADER DARK LUXURY - CON DOS LOGOS -->
     <header class="dark-luxury-header shimmer-effect">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
                 
-                <!-- LOGO A LA IZQUIERDA -->
-                <div class="flex-shrink-0">
-                    <img src="https://i.imgur.com/7ySsxSp.png" alt="Joyeria de Esmeraldas" class="h-28 md:h-32 lg:h-36 w-auto logo-img">
+                <!-- DOS LOGOS UNO AL LADO DEL OTRO -->
+                <div class="logo-container">
+                    <!-- Logo 1 -->
+                    <img src="https://i.imgur.com/7ySsxSp.png" alt="Joyeria de Esmeraldas - Logo 1">
+                    <!-- Separador dorado -->
+                    <div class="logo-divider"></div>
+                    <!-- Logo 2 (duplicado) -->
+                    <img src="https://i.imgur.com/7ySsxSp.png" alt="Joyeria de Esmeraldas - Logo 2">
                 </div>
 
                 <!-- BUSCADOR Y TEXTOS A LA DERECHA -->
